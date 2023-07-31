@@ -34,16 +34,16 @@
                     @foreach($rekomendasi as $rk)
                     <div class="col-md-6 col-lg-3">
                         <div class="card shadow-sm border-light mb-4">
-                            
+
                             @empty($rk->foto_kamar)
                             <a href="{{ route('detailCustomer.show',$rk->id) }}" class="position-relative">
-                            <img src="{{url('admin/img/no_foto_kamar.jpg')}}" class="card-img-top" alt="image"> 
+                                <img src="{{url('admin/img/no_foto_kamar.jpg')}}" class="card-img-top" alt="image">
                             </a>
                             @else
                             <a href="{{ route('detailCustomer.show',$rk->id) }}" class="position-relative">
-                            <img src="{{url('admin/img')}}/{{$rk->foto_kamar}}" class="card-img-top" alt="image">
+                                <img src="{{url('admin/img')}}/{{$rk->foto_kamar}}" class="card-img-top" alt="image">
                             </a>
-                            @endempty      
+                            @endempty
                             <div class="card-body">
                                 <div class="d-flex align-content-center align-items-center justify-content-between">
                                     <span class="font-weight-small">{{$rk->nama_kost}}</span>
@@ -62,7 +62,8 @@
                                         </i>{{$rk->alamat_kost}}
                                     </span>
                                 </div>
-                                <a href="{{ route('detailCustomer.show',$rk->id) }}"><button class="btn btn-primary bt">Lihat Kamar</button></a>
+                                <a href="{{ route('detailCustomer.show',$rk->id) }}"><button
+                                        class="btn btn-primary bt">Lihat Kamar</button></a>
                             </div>
                         </div>
                     </div>
@@ -84,17 +85,18 @@
                 @foreach($kost as $k)
                 <div class="col-md-6 col-lg-3">
                     <div class="card shadow-sm border-light mb-4">
-                    @empty($k->foto_kamar)
-                    <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
-                    <img style="height: 195px; width: 200px;" src="{{url('admin/img/no_foto_kamar.jpg')}}" class="card-img-top" alt="image"> </a> 
-                    @else
-                    <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
-                    <img src="{{url('admin/img/'.$k->foto_kamar)}}" class="card-img-top" alt="image"> </a>
-                    @endempty
+                        @empty($k->foto_kamar)
+                        <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
+                            <img style="height: 195px; width: 200px;" src="{{url('admin/img/no_foto_kamar.jpg')}}"
+                                class="card-img-top" alt="image"> </a>
+                        @else
+                        <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
+                            <img src="{{url('admin/img/'.$k->foto_kamar)}}" class="card-img-top" alt="image"> </a>
+                        @endempty
 
 
 
-                        
+
                         <div class="card-body">
                             <div class="d-flex align-content-center align-items-center justify-content-between">
                                 <span class="font-weight-small">{{$k->nama_kost}}</span>
@@ -202,87 +204,100 @@
 
 
 <section class="pt-5 pb-5 testimoni">
-  <div class="container">
-    <div class="header-tittle mb-4">
-      <h4>Testimoni</h4>
-    </div>
-    <div class="owl-carousel__nav float-right">
-      <div class="d-inline owl-carousel__prev"><</div>
-      <div class="d-inline  owl-carousel__next">></div>
-    </div>
-    <div class="testimonial3 py-5">
-      <div class="container">
-        <!-- Row  -->
-        <div class="owl-carousel owl-theme testi3 mt-4">
-          <!-- item -->
-          <div class="item">
-            <div class="card card-shadow border-0 mb-4">
-              <div class="card-body">
-                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                <div class="d-block d-md-flex align-items-center">
-                  <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                  <div class="ml-3">
-                    <h6 class="mb-0 customer">Michelle Anderson</h6>
-                    <span>Gamers</span>
-                    <!-- <div class="font-10">
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- item -->
-          <!-- item -->
-          <div class="item">
-            <div class="card card-shadow border-0 mb-4">
-              <div class="card-body">
-                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                <div class="d-block d-md-flex align-items-center">
-                  <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/2.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                  <div class="ml-3">
-                    <h6 class="mb-0 customer">Mark mesty</h6>
-                    <span>Youtuber</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- item -->
-          <!-- item -->
-          <div class="item">
-            <div class="card card-shadow border-0 mb-4">
-              <div class="card-body">
-                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                <div class="d-block d-md-flex align-items-center">
-                  <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/3.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                  <div class="ml-3">
-                    <h6 class="mb-0 customer">Limpsy adam</h6>
-                    <span>Mahasiswa Binus</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- item -->
-          <!-- item -->
-          <div class="item">
-            <div class="card card-shadow border-0 mb-4">
-              <div class="card-body">
-                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                <div class="d-flex no-block align-items-center">
-                  <span class="thumb-img"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg" alt="wrapkit" class="rounded-circle"/></span>
-                  <div class="ml-3">
-                    <h6 class="mb-0 customer">Michelle Anderson</h6>
-                    <span>BSI AJA</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- item -->
+    <div class="container">
+        <div class="header-tittle mb-4">
+            <h4>Testimoni</h4>
         </div>
-      </div>
+        <div class="owl-carousel__nav float-right">
+            <div class="d-inline owl-carousel__prev">&lt;</div>
+            <div class="d-inline  owl-carousel__next">&gt;</div>
+        </div>
+
+        <div class="testimonial3 py-5">
+            <div class="container">
+                <!-- Row  -->
+                <div class="owl-carousel owl-theme testi3 mt-4">
+                    <!-- item -->
+                    <div class="item">
+                        <div class="card card-shadow border-0 mb-4">
+                            <div class="card-body">
+                                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis
+                                    parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                                <div class="d-block d-md-flex align-items-center">
+                                    <span class="thumb-img"><img
+                                            src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg"
+                                            alt="wrapkit" class="rounded-circle" /></span>
+                                    <div class="ml-3">
+                                        <h6 class="mb-0 customer">Michelle Anderson</h6>
+                                        <span>Gamers</span>
+                                        <!-- <div class="font-10">
+                    </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- item -->
+                    <!-- item -->
+                    <div class="item">
+                        <div class="card card-shadow border-0 mb-4">
+                            <div class="card-body">
+                                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis
+                                    parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                                <div class="d-block d-md-flex align-items-center">
+                                    <span class="thumb-img"><img
+                                            src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/2.jpg"
+                                            alt="wrapkit" class="rounded-circle" /></span>
+                                    <div class="ml-3">
+                                        <h6 class="mb-0 customer">Mark mesty</h6>
+                                        <span>Youtuber</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- item -->
+                    <!-- item -->
+                    <div class="item">
+                        <div class="card card-shadow border-0 mb-4">
+                            <div class="card-body">
+                                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis
+                                    parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                                <div class="d-block d-md-flex align-items-center">
+                                    <span class="thumb-img"><img
+                                            src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/3.jpg"
+                                            alt="wrapkit" class="rounded-circle" /></span>
+                                    <div class="ml-3">
+                                        <h6 class="mb-0 customer">Limpsy adam</h6>
+                                        <span>Mahasiswa Binus</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- item -->
+                    <!-- item -->
+                    <div class="item">
+                        <div class="card card-shadow border-0 mb-4">
+                            <div class="card-body">
+                                <h6 class="font-weight-light mb-3">“Cum sociis natoque penatibus et magnis dis
+                                    parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
+                                <div class="d-flex no-block align-items-center">
+                                    <span class="thumb-img"><img
+                                            src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/1.jpg"
+                                            alt="wrapkit" class="rounded-circle" /></span>
+                                    <div class="ml-3">
+                                        <h6 class="mb-0 customer">Michelle Anderson</h6>
+                                        <span>BSI AJA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- item -->
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 @endsection
