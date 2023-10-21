@@ -76,6 +76,7 @@ class KostController extends Controller
             'id_user' =>  $request->id_user,
             'kota_id' =>  $request->kota_id,
             'foto_kamar' =>  $request->foto_kamar,
+            'unique_id' => $request->unique_id,
         ];
 
             
@@ -211,6 +212,7 @@ class KostController extends Controller
                 'id_fasilitas' => $request->id_fasilitas,
                 'id_user' => $request->id_user,
                 'kota_id' => $request->kota_id,
+                'unique_id' => $request->unique_id,
                 'created_at'=>now()
             ]);
        

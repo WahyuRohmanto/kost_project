@@ -62,7 +62,7 @@
                                         </i>{{$rk->alamat_kost}}
                                     </span>
                                 </div>
-                                <a href="{{ route('detailCustomer.show',$rk->id) }}"><button
+                                <a href="{{ route('detailCustomer.show',$rk->unique_id) }}"><button
                                         class="btn btn-primary bt">Lihat Kamar</button></a>
                             </div>
                         </div>
@@ -87,16 +87,13 @@
                     <div class="card shadow-sm border-light mb-4">
                         @empty($k->foto_kamar)
                         <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
-                            <img style="height: 195px; width: 200px;" src="{{url('admin/img/no_foto_kamar.jpg')}}"
-                                class="card-img-top" alt="image"> </a>
+                            <img src="{{url('admin/img/no_foto_kamar.jpg')}}" class="card-img-top" alt="image">
+                        </a>
                         @else
                         <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
-                            <img src="{{url('admin/img/'.$k->foto_kamar)}}" class="card-img-top" alt="image"> </a>
+                            <img src="{{url('admin/img')}}/{{$k->foto_kamar}}" class="card-img-top" alt="image">
+                        </a>
                         @endempty
-
-
-
-
                         <div class="card-body">
                             <div class="d-flex align-content-center align-items-center justify-content-between">
                                 <span class="font-weight-small">{{$k->nama_kost}}</span>
@@ -115,6 +112,9 @@
                                     </i>{{$k->alamat_kost}}
                                 </span>
                             </div>
+                            <a href="{{ route('detailCustomer.show',$k->unique_id) }}"><button
+                                    class="btn btn-primary bt">Lihat
+                                    Kamar</button></a>
                         </div>
                     </div>
                 </div>

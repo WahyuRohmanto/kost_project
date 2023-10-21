@@ -99,17 +99,20 @@ class PembayaranController extends Controller
             'tanggal_keluar' => 'required|max:45',
             'total_bayar' => 'required|max:45',
             'id_user' => 'required|max:45',
+            'metode_pembayaran' => 'required|max:45',
             'id_kamar' => 'required|max:45',
         ]);
 
             DB::table('pembayaran')->insert(
                 [
                     'kode_bayar' => $request->kode_bayar,
+                    'metode_pembayaran' => $request->metode_pembayaran,
                     'tanggal_masuk' => $request->tanggal_masuk,
                     'tanggal_keluar' => $request->tanggal_keluar,
                     'total_bayar' => $request->total_bayar,
                     'id_kamar' => $request->id_kamar,
                     'id_user' => $request->id_user,
+                    'pesanan' => $request->pesanan,
                     'status_pembayaran' => $request->status_pembayaran,
                     'created_at'=>now()
                 ]);

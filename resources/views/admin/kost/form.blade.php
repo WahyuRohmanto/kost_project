@@ -1,13 +1,11 @@
 @extends('admin.index')
 @section('content')
-
 {{-- cara import model di blade --}}
 @php
 $d_fasilitas = App\Models\Fasilitas::all();
 $t_user = App\Models\User::all();
 $kota = App\Models\Kota::all();
 @endphp
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -118,8 +116,8 @@ $kota = App\Models\Kota::all();
                                             <textarea name="alamat_kost" class="form-control" id="comment"
                                                 rows="5"></textarea>
                                         </div>
-
-                                        <small id="emailHelp" class="form-text text-muted">Silahkan masukan data yang
+                                        <input type="hidden" name="unique_id" value="{{ Str::uuid() }}  ">
+                                        <small id=" emailHelp" class="form-text text-muted">Silahkan masukan data yang
                                             valid!</small>
                                     </div>
                                 </div>
@@ -134,7 +132,7 @@ $kota = App\Models\Kota::all();
             </div>
         </div>
     </div>
- @include('admin.footer')
+    @include('admin.footer')
 </div>
 
 <!-- Custom template | don't include it in your project! -->

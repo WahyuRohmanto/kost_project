@@ -67,7 +67,7 @@
                                 <img style="width: 50px; height: 50px;" src="{{url('admin/img/users/wahyu.jpg')}}"
                                     class="rounded-circle " alt="...">
                                 <div class="d-flex flex-column mx-4 my-4 mb-4">
-                                    <a href="https://wa.me/{{$kost_id->telp ?? 'None'}}"
+                                    <a href="https://wa.me/+62{{$kost_id->telp ?? 'None'}}"
                                         style="border: 1px solid #11296B; color: #11296B;" class="btn bg-body rounded"
                                         type="submit">
                                         Tanya pemilik kost&nbsp;&nbsp;<i class="bi bi-chat-left-text"></i>
@@ -138,16 +138,20 @@
                                     </div>
                                     {{-- akhir Pembayaran --}}
                                     <div class="mb-3">
+                                        <input hidden type="text" name="metode_pembayaran" id="metode_pembayaran"
+                                            value="">
                                         <label for="">Pilih Pembayaran</label>
-                                        <div class="accordion" id="accordionExample">
+                                        <div class=" accordion" id="accordionExample">
                                             <div class="card">
                                                 <div class="card-header" id="headingOne">
                                                     <h2 class="mb-0">
-                                                        <button class="btn btn-block text-left" type="button"
-                                                            data-toggle="collapse" data-target="#collapseOne"
-                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                        <button id="bcaButton" class="btn btn-block text-left"
+                                                            type="button" data-toggle="collapse"
+                                                            data-target="#collapseOne" aria-expanded="true"
+                                                            aria-controls="collapseOne">
                                                             Pembayaran BCA
                                                         </button>
+
                                                     </h2>
                                                 </div>
 
@@ -162,7 +166,8 @@
                                             <div class="card">
                                                 <div class="card-header" id="headingTwo">
                                                     <h2 class="mb-0">
-                                                        <button class="btn btn-block text-left collapsed" type="button"
+                                                        <button id="qrisButton"
+                                                            class="btn btn-block text-left collapsed" type="button"
                                                             data-toggle="collapse" data-target="#collapseTwo"
                                                             aria-expanded="false" aria-controls="collapseTwo">
                                                             QRIS
@@ -180,9 +185,10 @@
                                             <div class="card">
                                                 <div class="card-header" id="headingThree">
                                                     <h2 class="mb-0">
-                                                        <button class="btn btn-block text-left collapsed" type="button"
-                                                            data-toggle="collapse" data-target="#collapseThree"
-                                                            aria-expanded="false" aria-controls="collapseThree">
+                                                        <button id="briButton" class="btn btn-block text-left collapsed"
+                                                            type="button" data-toggle="collapse"
+                                                            data-target="#collapseThree" aria-expanded="false"
+                                                            aria-controls="collapseThree">
                                                             BRI
                                                         </button>
                                                     </h2>
@@ -200,7 +206,7 @@
                                     <div class="mb-3">
                                         {{-- total harga --}}
                                         <input name="total_bayar" type="text" class="form-control" id="total_harga"
-                                            value="" hidden>
+                                            value="1000000" hidden>
                                     </div>
                                     <!-- modal untuk cek kembali -->
                                     <button type="button" class="btn btn-primary bt" data-toggle="modal"
@@ -265,6 +271,28 @@
 </div>
 </div>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script>
+// Fungsi untuk mengatur nilai metode_pembayaran saat pengguna memilih metode pembayaran
+function setMetodePembayaran(metode) {
+    document.getElementById('metode_pembayaran').value = metode;
+}
+
+// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran BCA
+document.getElementById('bcaButton').addEventListener('click', function() {
+    setMetodePembayaran('BCA');
+});
+
+// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran QRIS
+document.getElementById('qrisButton').addEventListener('click', function() {
+    setMetodePembayaran('QRIS');
+});
+
+// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran BRI
+document.getElementById('briButton').addEventListener('click', function() {
+    setMetodePembayaran('BRI');
+});
+</script>
+
 
 <!-- <script type="text/javascript">
 $("#modal").click(function() {

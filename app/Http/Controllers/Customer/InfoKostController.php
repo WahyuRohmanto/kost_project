@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Kost;
 use App\Models\Fasilitas;
 use App\Models\RekomendasiKost;
+use Ramsey\Uuid\Uuid;
 // import db dan pdf
 use DB;
 use PDF;
@@ -25,11 +26,10 @@ class InfoKostController extends Controller
         ->join('kost', 'rekomendasi_kost.kost_id', '=' , 'kost.id')
         ->get();
         // dd($rekomendasi);
-
-
-        $kost = Kost::select('*')
-        ->join('users', 'users.id', '=', 'kost.id_user')
-        ->get();
+        // $kost = Kost::select('*')
+        // ->join('users', 'users.id', '=', 'kost.id_user')
+        // ->get();    
+        $kost = Kost::all();
         // dd($kost);
         // $kost = Kost::all();
         return view('landingpage.home', compact('kost', 'rekomendasi'));
@@ -64,16 +64,16 @@ class InfoKostController extends Controller
      */
     public function show($id)
     {
-
+        
         $rekomendasi = DB::table('kost')
-        ->join('rekomendasi_kost', 'rekomendasi_kost.kost_id', '=' , 'kost.id')
-        ->join('users','kost.id_user','=' ,'users.id')
-        ->join('fasilitas' , "kost.id_fasilitas" , '=' , 'fasilitas.id')
+        ->join('users', 'kost.id_user', '=', 'users.id')
+        ->join('fasilitas', 'kost.id_fasilitas', '=', 'fasilitas.id')
         ->get();
         // dd($rekomendasi);
-        $kost_id = collect($rekomendasi)->firstWhere('kost_id', '==' ,$id);
+        $kost_id = collect($rekomendasi)->firstWhere('unique_id', '==' ,$id);
         // dd($kost_id);
         return view('landingpage.detail_kamar_customer',compact('kost_id'));
+        
     }
 
 
