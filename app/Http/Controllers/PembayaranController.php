@@ -11,6 +11,8 @@ use PDF;
 use App\Exports\ExportPembayaran;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class PembayaranController extends Controller
 {
@@ -114,6 +116,7 @@ class PembayaranController extends Controller
                     'id_user' => $request->id_user,
                     'pesanan' => $request->pesanan,
                     'status_pembayaran' => $request->status_pembayaran,
+                    'id_customer' => $request->id_customer,
                     'created_at'=>now()
                 ]);
         return back()->with('success','Pembayaran sedang di proses silahkan bayar sesuai total pembayaran!');
@@ -216,12 +219,8 @@ class PembayaranController extends Controller
     }
 
     public function transaksiCustomer(){
-        // $history = Pembayaran::all();
-
-        $history = Pembayaran::join('users', 'users.id', '=', 'pembayaran.id_user')
-              ->join('kost', 'kost.id', '=', 'users.id')
-              ->get(['*', 'pembayaran.id_user', 'users.name', 'kost.nama_kost', 'kost.luas_kamar', 'kost.harga_kamar']);
-// dd($history);
+        $history = Pembayaran::where('id_customer', Auth::user()->id)->get();
+        // dd($history);
         return view('landingpage.history', compact('history'));
     }
 }

@@ -25,7 +25,7 @@
                     @auth
                     @if(Auth::user()->name)
                     <tr>
-                        <td>{{$row->name}}</td>
+                        <td>{{$row->kode_bayar}}</td>
                         <td>{{$row->nama_kost}}</td>
                         <td>{{$row->luas_kamar}}</td>
                         <td>{{$row->total_bayar}}</td>

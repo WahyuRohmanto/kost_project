@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('pesanan', ['progress', 'diterima', 'ditolak'])->nullable();
             $table->enum('status_pembayaran', ['dibatalkan', 'diproses', 'success']);
             $table->unsignedBigInteger('id_user');
+            $table->integer('id_customer')->notnull();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

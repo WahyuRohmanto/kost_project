@@ -48,3 +48,23 @@ function openModal() {
   // Menampilkan modal
   document.getElementById("qris").style.display = "block";
 }
+
+// Fungsi untuk mengatur nilai metode_pembayaran saat pengguna memilih metode pembayaran
+function setMetodePembayaran(metode) {
+  document.getElementById('metode_pembayaran').value = metode;
+}
+
+// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran BCA
+document.getElementById('bcaButton').addEventListener('click', function() {
+  setMetodePembayaran('BCA');
+});
+
+// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran QRIS
+document.getElementById('qrisButton').addEventListener('click', function() {
+  setMetodePembayaran('QRIS');
+});
+
+// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran BRI
+document.getElementById('briButton').addEventListener('click', function() {
+  setMetodePembayaran('BRI');
+});

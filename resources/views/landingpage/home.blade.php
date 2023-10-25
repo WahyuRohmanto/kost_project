@@ -36,11 +36,11 @@
                         <div class="card shadow-sm border-light mb-4">
 
                             @empty($rk->foto_kamar)
-                            <a href="{{ route('detailCustomer.show',$rk->id) }}" class="position-relative">
+                            <a href="{{ route('detailCustomer.show',$rk->unique_id) }}" class="position-relative">
                                 <img src="{{url('admin/img/no_foto_kamar.jpg')}}" class="card-img-top" alt="image">
                             </a>
                             @else
-                            <a href="{{ route('detailCustomer.show',$rk->id) }}" class="position-relative">
+                            <a href="{{ route('detailCustomer.show',$rk->unique_id) }}" class="position-relative">
                                 <img src="{{url('admin/img')}}/{{$rk->foto_kamar}}" class="card-img-top" alt="image">
                             </a>
                             @endempty
@@ -86,11 +86,11 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="card shadow-sm border-light mb-4">
                         @empty($k->foto_kamar)
-                        <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
+                        <a href="{{ route('detailCustomer.show',$k->unique_id) }}" class="position-relative">
                             <img src="{{url('admin/img/no_foto_kamar.jpg')}}" class="card-img-top" alt="image">
                         </a>
                         @else
-                        <a href="{{ route('detailCustomer.show',$k->id) }}" class="position-relative">
+                        <a href="{{ route('detailCustomer.show',$k->unique_id) }}" class="position-relative">
                             <img src="{{url('admin/img')}}/{{$k->foto_kamar}}" class="card-img-top" alt="image">
                         </a>
                         @endempty

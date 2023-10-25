@@ -106,7 +106,7 @@
                                     <h4 class="fw-bold">Rp.
                                         {{number_format($kost_id->harga_kamar, 2, ',', '. ')}}<span>/bln</span>
                                         <input type="input" hidden id="harga"
-                                            value="{{$kost_id->harga_kamar ?? 'None'}}">
+                                            value="{{$kost_id->harga_kamar ?? 'None'}}2">
                                     </h4>
                                     {{-- Pembayaran --}}
                                     {{-- tangal masuk --}}
@@ -206,7 +206,9 @@
                                     <div class="mb-3">
                                         {{-- total harga --}}
                                         <input name="total_bayar" type="text" class="form-control" id="total_harga"
-                                            value="1000000" hidden>
+                                            value="" hidden>
+                                        <input type="input" name="id_customer" hidden value=" {{ Auth::user()->id }}"
+                                            id="id_customer">
                                     </div>
                                     <!-- modal untuk cek kembali -->
                                     <button type="button" class="btn btn-primary bt" data-toggle="modal"
@@ -243,7 +245,6 @@
                                                             <p id="val-date">: 20</p>
                                                             <h2 id="total"></h2>
                                                         </div>
-
                                                     </div>
 
                                                 </div>
@@ -271,28 +272,6 @@
 </div>
 </div>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-<script>
-// Fungsi untuk mengatur nilai metode_pembayaran saat pengguna memilih metode pembayaran
-function setMetodePembayaran(metode) {
-    document.getElementById('metode_pembayaran').value = metode;
-}
-
-// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran BCA
-document.getElementById('bcaButton').addEventListener('click', function() {
-    setMetodePembayaran('BCA');
-});
-
-// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran QRIS
-document.getElementById('qrisButton').addEventListener('click', function() {
-    setMetodePembayaran('QRIS');
-});
-
-// Event listener untuk mendengarkan saat pengguna memilih metode pembayaran BRI
-document.getElementById('briButton').addEventListener('click', function() {
-    setMetodePembayaran('BRI');
-});
-</script>
-
 
 <!-- <script type="text/javascript">
 $("#modal").click(function() {
