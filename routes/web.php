@@ -84,7 +84,7 @@ Route::resource('kamar', InfoKostController::class)->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/invoice', [PembayaranController::class, 'invoiceCustomer'])->name('invoice');
 Route::get('history', [PembayaranController::class, 'transaksiCustomer'])->name('history');
-Route::resource('/detailCustomer', InfoKostController::class);
+Route::resource('/detailCustomer', InfoKostController::class)->middleware('auth');
 Route::resource('/pembayaran', PembayaranController::class);
 Route::resource('/pembayaran', PembayaranController::class);
 
