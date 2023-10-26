@@ -10,23 +10,7 @@ $(document).ready(function () {
     var harga = $("#harga").val();
     var diff = new Date(keluar).getTime() - new Date(masuk).getTime();
     var days = diff / (1000 * 60 * 60 * 24);
-    // format angka rupiah
-    function formatRupiah(angka) {
-      var rupiah = "";
-      var angkarev = angka.toString().split("").reverse().join("");
-      for (var i = 0; i < angkarev.length; i++) {
-        if (i % 3 == 0) {
-          rupiah += angkarev.substr(i, 3) + ".";
-        }
-      }
-      return (
-        "Rp. " +
-        rupiah
-          .split("", rupiah.length - 1)
-          .reverse()
-          .join("")
-      );
-    }
+
     // Menghitung jika kelipatan bulan
     if (days <= 30) {
       total = 1;
@@ -43,6 +27,26 @@ $(document).ready(function () {
     $("#val-date").html(`: <b>${masuk}</b> sampai <b>${keluar}</b>`);
   });
 });
+
+// Format angka rupiah
+function formatRupiah(angka) {
+  var strAngka = angka.toString();
+  var angkaTanpaNol = strAngka.replace(/^0+/, ''); // Menghilangkan nol di depan angka
+  var desimal = '';
+  var splitAngka = angkaTanpaNol.split('.');
+  
+  if (splitAngka.length > 1) {
+    desimal = ',' + splitAngka[1];
+    if (desimal.length > 3) {
+      desimal = ',' + splitAngka[1].substring(0, 3);
+    }
+  }
+  
+  var ribuan = splitAngka[0];
+  ribuan = ribuan.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  return "Rp. " + ribuan + desimal;
+}
 
 function openModal() {
   // Menampilkan modal

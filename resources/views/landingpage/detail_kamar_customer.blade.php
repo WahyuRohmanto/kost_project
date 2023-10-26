@@ -106,7 +106,7 @@
                                     <h4 class="fw-bold">Rp.
                                         {{number_format($kost_id->harga_kamar, 2, ',', '. ')}}<span>/bln</span>
                                         <input type="input" hidden id="harga"
-                                            value="{{$kost_id->harga_kamar ?? 'None'}}2">
+                                            value="{{$kost_id->harga_kamar ?? 'None'}}">
                                     </h4>
                                     {{-- Pembayaran --}}
                                     {{-- tangal masuk --}}
@@ -134,7 +134,6 @@
                                         {{-- hidden input untuk pesanan --}}
                                         <input name="pesanan" value="progress" hidden type="text" class="form-control"
                                             required>
-
                                     </div>
                                     {{-- akhir Pembayaran --}}
                                     <div class="mb-3">
