@@ -69,7 +69,7 @@ class InfoKostController extends Controller
         ->join('users', 'kost.id_user', '=', 'users.id')
         ->join('fasilitas', 'kost.id_fasilitas', '=', 'fasilitas.id')
         ->get();
-        // dd($rekomendasi);
+        // dd($rekomendasi);   
         $kost_id = collect($rekomendasi)->firstWhere('unique_id', '==' ,$id);
         // dd($kost_id);
         return view('landingpage.detail_kamar_customer',compact('kost_id'));

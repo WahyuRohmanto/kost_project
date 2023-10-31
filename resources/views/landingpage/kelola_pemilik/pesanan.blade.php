@@ -35,7 +35,7 @@
                         <td>{{$pm->id_user}}</td>
                         <td>{{$pm->tanggal_masuk}}</td>
                         <td>{{$pm->tanggal_keluar}}</td>
-                        <td>Rp. {{number_format($pm->total_bayar, 0, ',', '. ')}}</td>
+                        <td>Rp.{{number_format($pm->total_bayar, 0, ',', '.')}}</td>
                         @if($pm->status_pembayaran === "diproses")
                         <td>
                             <p style="border-radius: 500px;" class="  fw-bold text-center btn-warning text-light">

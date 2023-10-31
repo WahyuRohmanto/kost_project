@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->string('kode_bayar', 45)->nullable();
+            $table->string('nama_kost', 45)->nullable();
+            $table->string('pemilik_kost', 45)->nullable();
             $table->string('metode_pembayaran', 45)->nullable();
             $table->date('tanggal_masuk');
             $table->date('tanggal_keluar');
@@ -26,6 +28,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->integer('id_customer')->notnull();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->string('unique_id_kost', 45)->unique()->nullable(false);
             $table->timestamps();
         });
     }

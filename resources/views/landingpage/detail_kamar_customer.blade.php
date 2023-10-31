@@ -104,7 +104,7 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <h4 class="fw-bold">Rp.
-                                        {{number_format($kost_id->harga_kamar, 2, ',', '. ')}}<span>/bln</span>
+                                        {{number_format($kost_id->harga_kamar, 2, ',', '.')}}<span>/bln</span>
                                         <input type="input" hidden id="harga"
                                             value="{{$kost_id->harga_kamar ?? 'None'}}">
                                     </h4>
@@ -123,14 +123,18 @@
                                         {{-- kode bayar --}}
                                         <input name="kode_bayar" hidden type="text" class="form-control" id="kode"
                                             required>
+                                        {{-- Input id kamar --}}
                                         <input name="id_kamar" value="{{$kost_id->id}}" hidden type="number"
                                             class="form-control" id="kode" required>
+                                        {{-- Input id user --}}
                                         <input name="id_user" value="{{$kost_id->id}}" hidden type="number"
                                             class="form-control" id="kode" required>
+                                        {{-- Input nama unique_id kost --}}
+                                        <input name="unique_id" value="{{$kost_id->unique_id}}" hidden type="text"
+                                            class="form-control" id="">
                                         {{-- status pembayaran --}}
                                         <input name="status_pembayaran" value="diproses" hidden type="text"
                                             class="form-control" id="kode" required>
-
                                         {{-- hidden input untuk pesanan --}}
                                         <input name="pesanan" value="progress" hidden type="text" class="form-control"
                                             required>
@@ -138,7 +142,7 @@
                                     {{-- akhir Pembayaran --}}
                                     <div class="mb-3">
                                         <input hidden type="text" name="metode_pembayaran" id="metode_pembayaran"
-                                            value="">
+                                            value="BCA">
                                         <label for="">Pilih Pembayaran</label>
                                         <div class=" accordion" id="accordionExample">
                                             <div class="card">
@@ -150,11 +154,9 @@
                                                             aria-controls="collapseOne">
                                                             Pembayaran BCA
                                                         </button>
-
                                                     </h2>
                                                 </div>
-
-                                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                                     data-parent="#accordionExample">
                                                     <div class="card-body mt-2">
                                                         <h2>5311008758</h2>
@@ -234,15 +236,20 @@
                                                             <p>Luas Kamar</p>
                                                             <p>Fasilitas</p>
                                                             <p>Tanggal</p>
-                                                            <h2>Harga</h2>
+                                                            <p>Jumlah Hari</p>
 
+
+                                                            <h2>Harga</h2>
                                                         </div>
                                                         <div class="col-sm-6" id="data">
                                                             <p>: {{$kost_id->nama_kost}}</p>
                                                             <p>: {{$kost_id->luas_kamar}}</p>
                                                             <p>: {{$kost_id->fasilitas}}</p>
-                                                            <p id="val-date">: 20</p>
-                                                            <h2 id="total"></h2>
+                                                            <p id="val-date">: -</p>
+                                                            <p id="date_total">: -</p>
+                                                            <h2 id="titi"></h2>
+                                                            <h2 id="total">
+                                                            </h2>
                                                         </div>
                                                     </div>
 

@@ -117,6 +117,7 @@ class PembayaranController extends Controller
                     'pesanan' => $request->pesanan,
                     'status_pembayaran' => $request->status_pembayaran,
                     'id_customer' => $request->id_customer,
+                    'unique_id_kost' => $request->unique_id,
                     'created_at'=>now()
                 ]);
         return back()->with('success','Pembayaran sedang di proses silahkan bayar sesuai total pembayaran!');
@@ -219,7 +220,12 @@ class PembayaranController extends Controller
     }
 
     public function transaksiCustomer(){
-        $history = Pembayaran::where('id_customer', Auth::user()->id)->get();
+        // $history = Pembayaran::where('id_customer', Auth::user()->id)->get();   
+        // dd($history);
+        $history = Pembayaran::join('kost', 'pembayaran.unique_id_kost', '=', 'kost.unique_id')
+        ->join('users', 'kost.id_user', '=', 'users.id')
+        ->where('pembayaran.id_customer', Auth::user()->id)
+        ->get();
         // dd($history);
         return view('landingpage.history', compact('history'));
     }

@@ -15,6 +15,7 @@ $(document).ready(function () {
     if (days <= 30) {
       total = 1;
       $("#total").html(": " + formatRupiah(total * harga + code));
+      $("#total_harga").val(total * harga + code);
     } else {
       var count = 1;
       for (var i = 30; i < days; i += 30) {
@@ -24,7 +25,8 @@ $(document).ready(function () {
       $("#total").html(": " + formatRupiah(total * harga + code));
       $("#total_harga").val(total * harga + code);
     }
-    $("#val-date").html(`: <b>${masuk}</b> sampai <b>${keluar}</b>`);
+    $("#val-date").html(`: <b>${masuk ? masuk : "-"}</b> sampai <b>${keluar ? keluar : "-"}</b>`);
+    $("#date_total").html(`: ${days ? days + " hari" : "-"}`)
   });
 });
 
@@ -48,6 +50,7 @@ function formatRupiah(angka) {
   return "Rp. " + ribuan + desimal;
 }
 
+
 function openModal() {
   // Menampilkan modal
   document.getElementById("qris").style.display = "block";
@@ -56,6 +59,8 @@ function openModal() {
 // Fungsi untuk mengatur nilai metode_pembayaran saat pengguna memilih metode pembayaran
 function setMetodePembayaran(metode) {
   document.getElementById('metode_pembayaran').value = metode;
+  document.getElementById('pay').innerHTML = metode;
+  
 }
 
 // Event listener untuk mendengarkan saat pengguna memilih metode pembayaran BCA
@@ -72,3 +77,4 @@ document.getElementById('qrisButton').addEventListener('click', function() {
 document.getElementById('briButton').addEventListener('click', function() {
   setMetodePembayaran('BRI');
 });
+
