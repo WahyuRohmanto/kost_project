@@ -41,12 +41,13 @@ Route::middleware(['auth', 'owner'])->group(function () {
     Route::view('dashboards', 'landingpage.dashboard');
     Route::get('dashboards', [PembayaranController::class, 'penyewa']);
     Route::get('detail-customer/{id}', [InfoKostController::class, 'show']);
-    Route::get('detail-tersedia/{id}', [DetailTersediaController::class, 'detail_tersedia']);
+    // Route::get('detail-tersedia/{id}', [DetailTersediaController::class, 'detail_tersedia']);
     Route::resource('kamar', InfoKostController::class);
     Route::resource('/data-pemilik', PemilikController::class);
     Route::get('pesanan', [PemilikController::class, 'pesanan']);
     Route::get('kost-pdf-pemilik', [PemilikController::class, 'cetakKost']);
     Route::get('kost-excel-pemilik', [PemilikController::class, 'print']);
+    Route::put('/pembayaran_pemilik/{id}', [PembayaranController::class, 'pemPemilik'])->name('pembayaran.pembayaran_pemilik');
 });
 
 // Admin Dashboard
@@ -87,6 +88,7 @@ Route::get('history', [PembayaranController::class, 'transaksiCustomer'])->name(
 Route::resource('/detailCustomer', InfoKostController::class)->middleware('auth');
 Route::resource('/pembayaran', PembayaranController::class);
 Route::resource('/pembayaran', PembayaranController::class);
+
 
 
 

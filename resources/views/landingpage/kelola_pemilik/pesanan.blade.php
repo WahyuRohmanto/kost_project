@@ -72,7 +72,8 @@
 
 
                         <td style="display: flex; justify-content: center; flex-direction: row; align-item: center;">
-                            <form method="POST" action="{{route('pembayaran.update', $pm->id)}}"
+                            {{-- Terima --}}
+                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik', $pm->id) }}"
                                 enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
@@ -80,23 +81,22 @@
                                 <button type="submit" data-toggle="tooltip" title="terima" class="btn btn-link btn-lg"
                                     data-original-title="terima"><i class="bi bi-check2-all"></i></button>
                             </form>
-
-                            <form method="POST" action="{{route('pembayaran.update', $pm->id)}}"
+                            {{-- Tolak --}}
+                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik', $pm->id) }}"
                                 enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
                                 <input name="pesanan" hidden value="ditolak" type="text" />
-                                <input name="status_pembayaran" hidden value="dibatalkan" type="text" />
                                 <button type="submit" data-toggle="tooltip" title="tolak"
                                     class="btn text-danger btn-link btn-lg" data-original-title="ditolak"><i
                                         class="bi bi-backspace-reverse"></i></button>
                             </form>
-                            <form method="POST" action="{{route('pembayaran.update', $pm->id)}}"
+                            {{-- Pogress --}}
+                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik', $pm->id) }}"
                                 enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
                                 <input name="pesanan" hidden value="progress" type="text" />
-                                <input name="status_pembayaran" hidden value="diproses" type="text" />
                                 <button type="submit" data-toggle="tooltip" title="pending"
                                     class="btn text-warning btn-link btn-lg" data-original-title="progress"><i
                                         class="bi bi-arrow-clockwise"></i></button>
