@@ -47,7 +47,7 @@ Route::middleware(['auth', 'owner'])->group(function () {
     Route::get('pesanan', [PemilikController::class, 'pesanan']);
     Route::get('kost-pdf-pemilik', [PemilikController::class, 'cetakKost']);
     Route::get('kost-excel-pemilik', [PemilikController::class, 'print']);
-    Route::put('/pembayaran_pemilik/{id}', [PembayaranController::class, 'pemPemilik'])->name('pembayaran.pembayaran_pemilik');
+    Route::put('/pembayaran_pemilik/{totalBayar}', [PembayaranController::class, 'pemPemilik'])->name('pembayaran.pembayaran_pemilik');
 });
 
 // Admin Dashboard

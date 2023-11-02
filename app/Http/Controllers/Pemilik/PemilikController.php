@@ -167,7 +167,10 @@ class PemilikController extends Controller
 
     public function pesanan(){
         $title = ['No', 'Kode Bayar', 'Customer', 'Tanggal Masuk', 'Tanggal Keluar', 'Total Bayar', 'Status Pembayaran', 'Pesanan', 'Action'];
-        $pembayaran = Pembayaran::all();
+        // $pembayaran = Pembayaran::all();
+        $pembayaran = Pembayaran::join('users', 'pembayaran.id_customer', '=', 'users.id')
+        ->get();
+        // dd($pembayaran);
 
         return view('landingpage.kelola_pemilik.pesanan', compact('pembayaran', 'title'));
     }

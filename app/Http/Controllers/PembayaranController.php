@@ -137,11 +137,12 @@ class PembayaranController extends Controller
     }
 
     // Mengupdate pesanan oleh pemilik
-    public function pemPemilik(Request $request, $id)
+    public function pemPemilik(Request $request, $totalBayar)
     {
+        // dd($request);
         DB::table('pembayaran')
-            ->where('id', $id)
-            ->update(['pesanan' => $request->pesanan]);
+        ->where('total_bayar', $totalBayar)
+        ->update(['pesanan' => $request->pesanan]);
         return back();
     }
 }

@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$pm->kode_bayar}}</td>
-                        <td>{{$pm->id_user}}</td>
+                        <td>{{$pm->name}}</td>
                         <td>{{$pm->tanggal_masuk}}</td>
                         <td>{{$pm->tanggal_keluar}}</td>
                         <td>Rp.{{number_format($pm->total_bayar, 0, ',', '.')}}</td>
@@ -73,7 +73,7 @@
 
                         <td style="display: flex; justify-content: center; flex-direction: row; align-item: center;">
                             {{-- Terima --}}
-                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik', $pm->id) }}"
+                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik',  $pm->total_bayar) }}"
                                 enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
@@ -82,7 +82,7 @@
                                     data-original-title="terima"><i class="bi bi-check2-all"></i></button>
                             </form>
                             {{-- Tolak --}}
-                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik', $pm->id) }}"
+                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik',  $pm->total_bayar) }}"
                                 enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
@@ -92,7 +92,7 @@
                                         class="bi bi-backspace-reverse"></i></button>
                             </form>
                             {{-- Pogress --}}
-                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik', $pm->id) }}"
+                            <form method="POST" action="{{ route('pembayaran.pembayaran_pemilik',  $pm->total_bayar) }}"
                                 enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
