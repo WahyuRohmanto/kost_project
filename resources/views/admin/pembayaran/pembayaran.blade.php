@@ -134,7 +134,7 @@ $title = ['No', 'Kode Bayar','Kost', 'Customer', 'Tanggal Masuk', 'Tanggal Kelua
                                                 <td>{{$fs['id_user']}}</td>
                                                 <td>{{$fs['tanggal_masuk']}}</td>
                                                 <td>{{$fs['tanggal_keluar']}}</td>
-                                                <td>Rp. {{number_format($fs['total_bayar'], 2, ',', '. ')}}</td>
+                                                <td>Rp. {{number_format($fs['total_bayar'], 2,',', '.')}}</td>
                                                 @if($fs->status_pembayaran === "diproses")
                                                 <td>
                                                     <p style="border-radius: 500px;"

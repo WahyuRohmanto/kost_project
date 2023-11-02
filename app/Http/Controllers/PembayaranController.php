@@ -29,16 +29,6 @@ class PembayaranController extends Controller
     // Menyimpan pembayaran baru
     public function store(Request $request)
     {
-        $request->validate([
-            'kode_bayar' => 'required|max:45',
-            'tanggal_masuk' => 'required|max:45',
-            'tanggal_keluar' => 'required|max:45',
-            'total_bayar' => 'required|max:45',
-            'id_user' => 'required|max:45',
-            'metode_pembayaran' => 'required|max:45',
-            'id_kamar' => 'required|max:45',
-        ]);
-
         // Menyimpan data pembayaran
         DB::table('pembayaran')->insert([
             'kode_bayar' => $request->kode_bayar,
@@ -66,7 +56,7 @@ class PembayaranController extends Controller
         return view('admin.pembayaran.detailPembayaran', compact('data'));
     }
 
-    // Mengupdate pembayaran oleh admin
+    // Mengupdate pembayaran oleh admin apakah uang sudah masuk atau belum
     public function update(Request $request, $id)
     {
         $data = [
@@ -136,10 +126,9 @@ class PembayaranController extends Controller
         return view('landingpage.history', compact('history'));
     }
 
-    // Mengupdate pesanan oleh pemilik
+    // Mengupdate pesanan oleh pemilik apakah diterima atau tidak
     public function pemPemilik(Request $request, $totalBayar)
     {
-        // dd($request);
         DB::table('pembayaran')
         ->where('total_bayar', $totalBayar)
         ->update(['pesanan' => $request->pesanan]);

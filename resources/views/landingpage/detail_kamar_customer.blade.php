@@ -237,8 +237,7 @@
                                                             <p>Fasilitas</p>
                                                             <p>Tanggal</p>
                                                             <p>Jumlah Hari</p>
-
-
+                                                            <p>Pembayaran</p>
                                                             <h2>Harga</h2>
                                                         </div>
                                                         <div class="col-sm-6" id="data">
@@ -247,7 +246,7 @@
                                                             <p>: {{$kost_id->fasilitas}}</p>
                                                             <p id="val-date">: -</p>
                                                             <p id="date_total">: -</p>
-                                                            <h2 id="titi"></h2>
+                                                            <p id="pay">: BCA</p>
                                                             <h2 id="total">
                                                             </h2>
                                                         </div>
