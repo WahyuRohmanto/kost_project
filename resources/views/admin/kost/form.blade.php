@@ -12,7 +12,7 @@ $kota = App\Models\Kota::all();
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="{{url('/administrator')}}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -20,13 +20,13 @@ $kota = App\Models\Kota::all();
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Forms</a>
+                        <a href="#">Master Data</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Basic Form</a>
+                        <a href="#">Add Kost</a>
                     </li>
                 </ul>
             </div>

@@ -17,7 +17,7 @@ $kota = App\Models\Kota::all();
                 <div class="page-header">
                     <ul class="breadcrumbs">
                         <li class="nav-home">
-                            <a href="#">
+                            <a href="{{url('/administrator')}}">
                                 <i class="flaticon-home"></i>
                             </a>
                         </li>
@@ -25,13 +25,13 @@ $kota = App\Models\Kota::all();
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Tables</a>
+                            <a href="#">Master Data</a>
                         </li>
                         <li class="separator">
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Datatables</a>
+                            <a href="{{url('/kost')}}">Kost</a>
                         </li>
                     </ul>
                 </div>
@@ -102,7 +102,7 @@ $kota = App\Models\Kota::all();
                                                     @empty($fs->foto_kamar)
                                                     <img src="{{ url('https://stimra.ac.id/wp-content/themes/consultix/images/no-image-found-360x260.png') }}"
                                                         width="35%" alt="Profile">
-                                                      @else
+                                                    @else
                                                     <img src="{{ url('admin/img')}}/{{$fs->foto_kamar}}" width="100%"
                                                         alt="Profile">
                                                     @endempty
@@ -125,9 +125,8 @@ $kota = App\Models\Kota::all();
                                                                 data-original-title="Edit">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            <button role="button"
-                                                                id="delete"
-                                                                type="submit" name="_method data-toggle="tooltip" title="Remove"
+                                                            <button role="button" id="delete" type="submit"
+                                                                name="_method data-toggle=" tooltip" title="Remove"
                                                                 class="btn btn-link btn-danger delete-confirm show_confirm"
                                                                 data-original-title="Remove">
                                                                 <i class="fa fa-trash"></i>
@@ -150,30 +149,28 @@ $kota = App\Models\Kota::all();
     </div>
 
     {{-- Custom template | don't include it in your project! --}}
- <!-- Custom template | don't include it in your project! -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <!-- Custom template | don't include it in your project! -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
-<script type="text/javascript">
-
- $('.show_confirm').click(function(event) {
-      var form =  $(this).closest("form");
-      var name = $(this).data("name");
-      event.preventDefault();
-      swal({
-          title: `Yakin akan menghapus data kost?`,
-          text: "Data akan dihapus permanent!",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          form.submit();
-        }
-      });
-  });
-
-</script>
+    <script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+                title: `Yakin akan menghapus data kost?`,
+                text: "Data akan dihapus permanent!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+    </script>
     {{-- End Custom template --}}
 </div>
 
