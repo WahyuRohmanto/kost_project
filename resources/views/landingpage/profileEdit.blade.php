@@ -1,32 +1,8 @@
 @extends('landingpage.app')
 @section('content')
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="container">
     <div class="row">
-        <div class="col-md-3 ">
-            <div class="list-group ">
-                <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action">User Management</a>
-                <a href="#" class="list-group-item list-group-item-action">Used</a>
-                <a href="#" class="list-group-item list-group-item-action">Enquiry</a>
-                <a href="#" class="list-group-item list-group-item-action">Dealer</a>
-                <a href="#" class="list-group-item list-group-item-action">Media</a>
-                <a href="#" class="list-group-item list-group-item-action">Post</a>
-                <a href="#" class="list-group-item list-group-item-action">Category</a>
-                <a href="#" class="list-group-item list-group-item-action">New</a>
-                <a href="#" class="list-group-item list-group-item-action">Comments</a>
-                <a href="#" class="list-group-item list-group-item-action">Appearance</a>
-                <a href="#" class="list-group-item list-group-item-action">Reports</a>
-                <a href="#" class="list-group-item list-group-item-action">Settings</a>
-
-
-            </div>
-        </div>
-        <div class="col-md-9">
+        <div class="col">
             <div class="card">
                 <div class="card-body">
                     <div class="row">

@@ -6,7 +6,7 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\CustomerProfileController;
+use App\Http\Controllers\ProfileController;
 // import controller subfolder
 use App\Http\Controllers\Customer\InfoKostController;
 use App\Http\Controllers\Auth\UsersController;
@@ -91,7 +91,8 @@ Route::get('history', [PembayaranController::class, 'transaksiCustomer'])->name(
 Route::resource('/detailCustomer', InfoKostController::class)->middleware('auth');
 Route::resource('/pembayaran', PembayaranController::class);
 Route::resource('/pembayaran', PembayaranController::class);
-Route::resource('customer-profile', CustomerProfileController::class);
+Route::resource('customer-profile', ProfileController::class);
+
 
 
 

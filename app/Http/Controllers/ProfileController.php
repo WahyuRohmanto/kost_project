@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CustomerProfileController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -58,7 +58,8 @@ class CustomerProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        return view('landingpage.profileEdit',compact('user'));
     }
 
     /**

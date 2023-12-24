@@ -84,25 +84,24 @@
                                         </div>
                                         <div class="form-group">
                                             <!-- <label>Password Lama</label> -->
-                                            
+
                                             <input hidden value="{{Auth::user()->password}}" required type="password"
                                                 class="form-control" placeholder="password">
-                                           
+
                                         </div>
                                         <div class="form-group">
                                             <label>Password Baru</label>
-                                            <input name="password" type="password"
-                                                class="form-control" placeholder="password">
+                                            <input name="password" type="password" class="form-control"
+                                                placeholder="password">
                                         </div>
                                         <div class="form-group">
                                             <label>Konfirmasi Password</label>
-                                            <input name="password_konfirmasi" type="password"
-                                                class="form-control" placeholder="password">
+                                            <input name="password_konfirmasi" type="password" class="form-control"
+                                                placeholder="password">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Role User</label>
-                                            <select name="role" class="form-control"
-                                                id="exampleFormControlSelect1">
+                                            <select name="role" class="form-control" id="exampleFormControlSelect1">
                                                 <option>admin</option>
                                                 <option>customer</option>
                                                 <option>pemilik</option>
@@ -124,6 +123,6 @@
             </div>
         </div>
     </div>
-@include('admin.footer')
+    @include('admin.footer')
 </div>
 @endsection
