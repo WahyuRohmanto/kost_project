@@ -6,6 +6,7 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\CustomerProfileController;
 // import controller subfolder
 use App\Http\Controllers\Customer\InfoKostController;
 use App\Http\Controllers\Auth\UsersController;
@@ -17,6 +18,8 @@ use App\Http\Middleware\Role;
 use App\Http\Controllers\Customer\DetailTersediaController;
 use App\Http\Controllers\Pemilik\PemilikController;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+
+
 
 
 /*
@@ -88,6 +91,7 @@ Route::get('history', [PembayaranController::class, 'transaksiCustomer'])->name(
 Route::resource('/detailCustomer', InfoKostController::class)->middleware('auth');
 Route::resource('/pembayaran', PembayaranController::class);
 Route::resource('/pembayaran', PembayaranController::class);
+Route::resource('customer-profile', CustomerProfileController::class);
 
 
 
