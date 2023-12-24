@@ -1,118 +1,87 @@
 @extends('landingpage.app')
 @section('content')
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<div class="wrapper" style=" background-color:#eee;">
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <section>
+                    <div class="container py-2">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <img src="#" alt="avatar" class="rounded-circle img-fluid"
+                                            style="width: 150px;">
+                                        <h5 class="my-3">{{$user->pekerjaan}}</h5>
+                                        <p class="text-muted mb-1"></p>
+                                        <p class="text-muted mb-4">{{$user->role}}</p>
+                                        <div class="d-flex justify-content-center mb-2">
+                                            <a href="/" class="btn bt ms-1 "><i
+                                                    class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 ">
-            <div class="list-group ">
-                <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action">User Management</a>
-                <a href="#" class="list-group-item list-group-item-action">Used</a>
-                <a href="#" class="list-group-item list-group-item-action">Enquiry</a>
-                <a href="#" class="list-group-item list-group-item-action">Dealer</a>
-                <a href="#" class="list-group-item list-group-item-action">Media</a>
-                <a href="#" class="list-group-item list-group-item-action">Post</a>
-                <a href="#" class="list-group-item list-group-item-action">Category</a>
-                <a href="#" class="list-group-item list-group-item-action">New</a>
-                <a href="#" class="list-group-item list-group-item-action">Comments</a>
-                <a href="#" class="list-group-item list-group-item-action">Appearance</a>
-                <a href="#" class="list-group-item list-group-item-action">Reports</a>
-                <a href="#" class="list-group-item list-group-item-action">Settings</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="mb-3 p-0">
+                                            <a href="{{route('customer-profile.edit',auth()->user()->id)}}"
+                                                class="btn"><i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
+                                                Profile</a>
+                                        </div>
+                                        <div class="row">
 
-
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Your Profile</h4>
-                            <hr>
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Full Name</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{$user->name}}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Email</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{$user->email}}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        {{-- <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Pekerjaan</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0"></p>
+                                            </div>
+                                        </div> --}}
+                                        {{-- <hr> --}}
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Mobile</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{$user->telp}}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Address</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{$user->alamat}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form>
-                                <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">User Name*</label>
-                                    <div class="col-8">
-                                        <input id="username" name="username" placeholder="Username"
-                                            class="form-control here" required="required" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="name" class="col-4 col-form-label">First Name</label>
-                                    <div class="col-8">
-                                        <input id="name" name="name" placeholder="First Name" class="form-control here"
-                                            type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
-                                    <div class="col-8">
-                                        <input id="lastname" name="lastname" placeholder="Last Name"
-                                            class="form-control here" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="text" class="col-4 col-form-label">Nick Name*</label>
-                                    <div class="col-8">
-                                        <input id="text" name="text" placeholder="Nick Name" class="form-control here"
-                                            required="required" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Display Name public as</label>
-                                    <div class="col-8">
-                                        <select id="select" name="select" class="custom-select">
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">Email*</label>
-                                    <div class="col-8">
-                                        <input id="email" name="email" placeholder="Email" class="form-control here"
-                                            required="required" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="website" class="col-4 col-form-label">Website</label>
-                                    <div class="col-8">
-                                        <input id="website" name="website" placeholder="website"
-                                            class="form-control here" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
-                                    <div class="col-8">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4"
-                                            class="form-control"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="newpass" class="col-4 col-form-label">New Password</label>
-                                    <div class="col-8">
-                                        <input id="newpass" name="newpass" placeholder="New Password"
-                                            class="form-control here" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Update My
-                                            Profile</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
+                </section>
             </div>
         </div>
     </div>
