@@ -33,11 +33,13 @@
                 @endguest
                 @auth
                 <div class="dropdown">
-                    <button class="btn name dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <button class=" btn name dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-expanded="false">
                         {{ Auth::user()->name }}
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item"><i class="fas fa-street-view"></i> {{ Auth::user()->role }}</a>
+                        <a href="aksjdkf" class="dropdown-item"><i class="fas fa-street-view"></i>
+                            {{ Auth::user()->role }}</a>
                         @if(Auth::user()->role === "customer")
                         <a href="{{route('history')}}" class="dropdown-item"><i class="bi bi-hourglass-bottom"></i>
                             Riwayat Transaksi</a>

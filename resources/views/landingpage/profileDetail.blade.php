@@ -1,5 +1,5 @@
-@extends('admin.index')
-@section('content');
+@extends('landingpage.app')
+@section('content')
 <div class="wrapper" style=" background-color:#eee;">
     <div class="main-panel">
         <div class="content">
@@ -10,13 +10,13 @@
                             <div class="col-lg-4">
                                 <div class="card mb-4">
                                     <div class="card-body text-center">
-                                        <img src="{{url('/admin/img/users/'.$user_id->foto_user)}}" alt="avatar"
-                                            class="rounded-circle img-fluid" style="width: 150px;">
+                                        <img src="#" alt="avatar" class="rounded-circle img-fluid"
+                                            style="width: 150px;">
                                         <h5 class="my-3"></h5>
-                                        <p class="text-muted mb-1">{{$user_id->role}}</p>
-                                        <p class="text-muted mb-4">{{$user_id->pekerjaan}}</p>
+                                        <p class="text-muted mb-1">1</p>
+                                        <p class="text-muted mb-4">kuli</p>
                                         <div class="d-flex justify-content-center mb-2">
-                                            <a href="{{url('users')}}" class="btn bt ms-1 "><i
+                                            <a href="#" class="btn bt ms-1 "><i
                                                     class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
 
                                         </div>
@@ -27,8 +27,8 @@
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="mb-3 p-0">
-                                            <a href="{{ url('user-edit',Auth::user()->id) }}" class="btn"><i
-                                                    class="fa fa-edit"></i>&nbsp;&nbsp;Edit Profile</a>
+                                            <a href="1" class="btn"><i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
+                                                Profile</a>
                                         </div>
                                         <div class="row">
 
@@ -36,7 +36,7 @@
                                                 <p class="mb-0">Full Name</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <p class="text-muted mb-0">{{$user_id->name}}</p>
+                                                <p class="text-muted mb-0">asep</p>
                                             </div>
                                         </div>
                                         <hr>
@@ -45,7 +45,7 @@
                                                 <p class="mb-0">Email</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <p class="text-muted mb-0">{{$user_id->email}}</p>
+                                                <p class="text-muted mb-0">asep</p>
                                             </div>
                                         </div>
                                         <hr>
@@ -54,7 +54,7 @@
                                                 <p class="mb-0">Pekerjaan</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <p class="text-muted mb-0">{{$user_id->pekerjaan}}</p>
+                                                <p class="text-muted mb-0">kuli</p>
                                             </div>
                                         </div>
                                         <hr>
@@ -63,7 +63,7 @@
                                                 <p class="mb-0">Mobile</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <p class="text-muted mb-0">{{$user_id->telp}}</p>
+                                                <p class="text-muted mb-0">0877772727</p>
                                             </div>
                                         </div>
                                         <hr>
@@ -72,7 +72,7 @@
                                                 <p class="mb-0">Address</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <p class="text-muted mb-0">{{$user_id->alamat}}</p>
+                                                <p class="text-muted mb-0">jahsdjhfjhakjhhjh</p>
                                             </div>
                                         </div>
                                     </div>
