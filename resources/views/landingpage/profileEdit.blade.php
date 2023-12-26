@@ -17,11 +17,12 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row">
-                                    
+
                                     <label for="name" class="col-4 col-form-label">Nama</label>
                                     <div class="col-8">
                                         <input id="username" name="name" placeholder="Username"
-                                            class="form-control here" required="required" type="text" value="{{$user->name}}">
+                                            class="form-control here" required="required" type="text"
+                                            value="{{$user->name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -41,17 +42,17 @@
                                 <div class="form-group row">
                                     <label for="text" class="col-4 col-form-label">No. Telpon</label>
                                     <div class="col-8">
-                                        <input id="text" placeholder="Nick Name" class="form-control here"
-                                             name="telp" type="text" value="{{$user->telp}}">
+                                        <input id="text" placeholder="Nick Name" class="form-control here" name="telp"
+                                            type="text" value="{{$user->telp}}">
 
-                                            <input hidden id="text" name="role" placeholder="Nick Name" class="form-control here"
-                                             type="text" value="{{$user->role}}">
+                                        <input hidden id="text" name="role" placeholder="Nick Name"
+                                            class="form-control here" type="text" value="{{$user->role}}">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button type="submit" class="btn btn-primary">Update My
+                                        <button type="submit" class="btn btn-update">Update My
                                             Profile</button>
                                     </div>
                                 </div>

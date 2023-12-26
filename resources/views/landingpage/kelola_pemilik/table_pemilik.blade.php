@@ -14,9 +14,15 @@
             <a title="Export to PDF" href="{{url('kost-excel-pemilik')}}"
                 class="btn ml-2 btn-print btn-outline mb-3 text-light">
                 <span class="btn-label">
-                <i class="fa fa-print"></i>
+                    <i class="fa fa-print"></i>
                 </span>
                 Print
+            </a>
+            <a title="Add Kost" href="{{url('addKost')}}" class="btn ml-2 btn-add btn-outline mb-3 text-light">
+                <span class="btn-label">
+                    <i class="fa fa-plus"></i>
+                </span>
+                Add
             </a>
             <table class="table table-hover">
                 <thead style=" background-color: #11296b;">

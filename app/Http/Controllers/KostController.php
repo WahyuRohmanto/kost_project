@@ -215,9 +215,16 @@ class KostController extends Controller
                 'unique_id' => $request->unique_id,
                 'created_at'=>now()
             ]);
-       
-        return redirect()->route('kost.index')
-                        ->with('success','Kost Berhasil Disimpan');
+            // Ambil peran pengguna saat ini
+            $role = auth()->user()->role;
+
+            // Jika pengguna adalah pemilik
+            if ($role === 'pemilik') {
+            // Arahkan pengguna ke halaman kost.index
+            return redirect()->route('data-pemilik.index')->with('success','Kost Berhasil Disimpan');
+        }
+            else {return redirect()->route('kost.index')
+                ->with('success','Kost Berhasil Disimpan');}
     }
 
     /**

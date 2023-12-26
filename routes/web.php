@@ -51,13 +51,15 @@ Route::middleware(['auth', 'owner'])->group(function () {
     Route::get('kost-pdf-pemilik', [PemilikController::class, 'cetakKost']);
     Route::get('kost-excel-pemilik', [PemilikController::class, 'print']);
     Route::put('/pembayaran_pemilik/{totalBayar}', [PembayaranController::class, 'pemPemilik'])->name('pembayaran.pembayaran_pemilik');
+    Route::get('/addKost', function () {
+        return view('landingpage.kelola_pemilik.form_addKost');
+    });
 });
 
 // Admin Dashboard
 Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/administrator', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/fasilitas', FasilitasController::class);
-    Route::resource('/kost', KostController::class);
     Route::resource('/rekomendasi', RekomendasikanController::class);
     Route::get('kost-edit/{id}', [KostController::class, 'edit']);
     Route::get('fasilitas-edit/{id}', [FasilitasController::class, 'edit']);
@@ -92,6 +94,7 @@ Route::resource('/detailCustomer', InfoKostController::class)->middleware('auth'
 Route::resource('/pembayaran', PembayaranController::class);
 Route::resource('/pembayaran', PembayaranController::class);
 Route::resource('customer-profile', ProfileController::class);
+Route::resource('/kost', KostController::class);
 
 
 

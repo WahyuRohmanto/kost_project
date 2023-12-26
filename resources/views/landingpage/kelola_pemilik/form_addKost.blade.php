@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('landingpage.app')
 @section('content')
 @php
 $d_fasilitas = App\Models\Fasilitas::all();
@@ -8,50 +8,31 @@ $kota = App\Models\Kota::all();
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <ul class="breadcrumbs">
-                    <li class="nav-home">
-                        <a href="{{url('/administrator')}}">
-                            <i class="flaticon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Master Data</a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Add Kost</a>
-                    </li>
-                </ul>
-            </div>
             <!-- form validation -->
-            <div class="text-danger">
-                @if ($errors->any())
-                <strong>Whoops!</strong> Terjadi Kesalahan saat input data<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
+
             <!-- end validation form -->
             <div class="row">
-                <div class="col-md-12">
+                @include('landingpage.sidebar')
+                <div class="col">
                     <div class="card">
                         <form method="POST" action="{{ route('kost.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class=" card-header">
                                 <div class="card-title">Form Data Kost</div>
+                                <div class="text-danger">
+                                    @if ($errors->any())
+                                    <strong>Whoops!</strong> Terjadi Kesalahan saat input data<br><br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-8 col-lg-6 ">
+                                    <div class="col ">
                                         <div class="form-group">
                                             <label>Nama Kost</label>
                                             <input name="nama_kost" type="text" class="form-control"
@@ -73,7 +54,7 @@ $kota = App\Models\Kota::all();
                                                 placeholder="keterangan">
                                         </div>
 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label>User</label>
                                             <select name="id_user" class="form-control">
                                                 @foreach($t_user as $usr)
@@ -82,9 +63,11 @@ $kota = App\Models\Kota::all();
                                                 @endif
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> -->
 
-                                        <div class="form-group">
+                                        <input name="id_user" hidden value="{{auth()->id()}}">
+
+                                        <div class=" form-group">
                                             <label>Kota</label>
                                             <select name="kota_id" class="form-control">
                                                 @foreach($kota as $kt)
@@ -117,22 +100,19 @@ $kota = App\Models\Kota::all();
                                         <input type="hidden" name="unique_id" value="{{ Str::uuid() }}  ">
                                         <small id=" emailHelp" class="form-text text-muted">Silahkan masukan data yang
                                             valid!</small>
+                                        <div class="card-action mt-3">
+                                            <button type="submit" class="btn btn-success">Save</button>
+                                            <a href="{{url('data-pemilik')}}" class="btn btn-danger">Back</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <button type="submit" class="btn btn-success">Save</button>
-                                <a href="{{url('kost')}}" class="btn btn-danger">Back</a>
-                            </div>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @include('admin.footer')
 </div>
-
-<!-- Custom template | don't include it in your project! -->
-
 @endsection
