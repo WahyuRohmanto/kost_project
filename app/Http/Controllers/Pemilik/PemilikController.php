@@ -93,12 +93,12 @@ class PemilikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($unique_id)
     {
-
         $fasilitas = Fasilitas::all();
-        $detail_kamar = Kost::find($id);
-        $kota = Kota::find($id);
+        // $detail_kamar = Kost::all();
+        $detail_kamar = Kost::where('unique_id', $unique_id)->first();
+        $kota = Kota::all();
         return view('landingpage.kelola_pemilik.form_edit',compact('detail_kamar', 'fasilitas', 'kota'));
     }
 

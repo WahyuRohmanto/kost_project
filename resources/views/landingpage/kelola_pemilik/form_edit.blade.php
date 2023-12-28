@@ -63,22 +63,43 @@
                                                         type="text" class="form-control" placeholder="">
                                                 </div>
 
+                                                <!-- <div class="form-group">
+                                                    <label>Foto Kamar</label>
+                                                    <input name="foto_kamar" type="file" class="form-control-file">
+                                                </div> -->
+
+
+
+
+
                                                 <div class="form-group">
                                                     <label>Fasilitas</label>
                                                     <select name="id_fasilitas" class="form-control">
                                                         @foreach($fasilitas as $fs)
-                                                        @if($fs->id === $detail_kamar->id)
+                                                        @if($fs->id === $detail_kamar->id_fasilitas)
                                                         <option value="{{$detail_kamar->id_fasilitas}}">
                                                             {{$fs->fasilitas}}</option>
                                                         @endif
                                                         @endforeach
+                                                        @foreach($fasilitas as $fs)
+                                                        <option value="{{$fs->id}}">
+                                                            {{$fs->fasilitas}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class=" form-group">
                                                     <label>Kota</label>
                                                     <select name="kota_id" class="form-control">
+                                                        @foreach($kota as $kt)
+                                                        @if($kt->id === $detail_kamar->kota_id)
                                                         <option value="{{$detail_kamar->kota_id}}">
-                                                            {{$kota->nama_kota}}</option>
+                                                            {{$kt->nama_kota}}</option>
+                                                        @endif
+                                                        @endforeach
+                                                        @foreach($kota as $kt)
+                                                        <option value="{{$kt->id}}">
+                                                            {{$kt->nama_kota}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -92,17 +113,16 @@
                                         </div>
                                     </div>
                                     <div class="d-flex item-center justify-content-justify">
-                                    <div class="card-action pl-4">
-                                        <button type="submit" class="btn btn-success">Update</button>
-                                    </div>
+                                        <div class="card-action pl-4">
+                                            <button type="submit" class="btn btn-success">Update</button>
+                                        </div>
                                 </form>
                                 <div class="card-action p-4 pt-0">
-                                <form class="card-action" action="{{url('data-pemilik')}}">
-                                    <a name="_method" class="btn btn-danger show_confirm">Back</a>
-                                </form>
+                                    <form class="card-action" action="{{url('data-pemilik')}}">
+                                        <a name="_method" class="btn btn-danger show_confirm">Back</a>
+                                    </form>
                                 </div>
-                                </div>            
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,29 +132,28 @@
 </div>
 </div>
 </div>
- <!-- Custom template | don't include it in your project! -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+</div>
+<!-- Custom template | don't include it in your project! -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
 <script type="text/javascript">
-
- $('.show_confirm').click(function(event) {
-      var form =  $(this).closest("form");
-      var name = $(this).data("name");
-      event.preventDefault();
-      swal({
-          title: `Yakin ingin kembali?`,
-          text: "",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          form.submit();
-        }
-      });
-  });
-
+$('.show_confirm').click(function(event) {
+    var form = $(this).closest("form");
+    var name = $(this).data("name");
+    event.preventDefault();
+    swal({
+            title: `Yakin ingin kembali?`,
+            text: "",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            }
+        });
+});
 </script>
 
 
