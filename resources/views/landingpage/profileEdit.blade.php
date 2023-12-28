@@ -52,9 +52,10 @@
 
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button type="submit" class="btn btn-update">Update My
-                                            Profile</button>
+                                        <a href="{{ url('/customer-profile') }}" class="btn btn-danger">Back</a>
+                                        <button type="submit" class="btn btn-update">Update</button>
                                     </div>
+
                                 </div>
                             </form>
                         </div>

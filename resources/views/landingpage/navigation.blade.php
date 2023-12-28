@@ -38,8 +38,9 @@
                         {{ Auth::user()->name }}
                     </button>
                     <div class="dropdown-menu">
-                        <a href="{{route('customer-profile.index')}}" class="dropdown-item"><i class="fas fa-street-view"></i>
-                            {{ Auth::user()->role }}</a>
+                        <a href="{{route('customer-profile.index')}}" class="dropdown-item"><i
+                                class="fas fa-street-view"></i>
+                            Profile</a>
                         @if(Auth::user()->role === "customer")
                         <a href="{{route('history')}}" class="dropdown-item"><i class="bi bi-hourglass-bottom"></i>
                             Riwayat Transaksi</a>
