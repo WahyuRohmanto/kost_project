@@ -26,7 +26,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('metode_pembayaran', 45)->nullable();
             $table->integer('id_customer')->notnull();
-            $table->string('unique_id_kost', 45)->unique()->nullable(false);
+            $table->string('unique_id_kost', 45)->nullable(false);
             $table->unsignedBigInteger('id_user');
         });
     }

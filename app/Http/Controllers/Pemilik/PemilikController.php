@@ -143,6 +143,18 @@ class PemilikController extends Controller
         
     }
 
+    public function destroy($unique_id)
+    {
+        $kost = Kost::where('unique_id', $unique_id)->first();
+
+        if (!$kost) {
+            return redirect()->route('data-pemilik.index')->with(['error' => 'Kost Pemilik tidak ditemukan!']);
+        }
+
+        $kost->delete();
+
+        return redirect()->route('data-pemilik.index')->with(['success' => 'Kost Pemilik Berhasil Dihapus!']);
+    }
     /**
      * Remove the specified resource from storage.
      *

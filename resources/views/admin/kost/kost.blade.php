@@ -126,7 +126,7 @@ $kota = App\Models\Kota::all();
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                             <button role="button" id="delete" type="submit"
-                                                                name="_method data-toggle=" tooltip" title="Remove"
+                                                                name="_method data-toggle=" tooltip title="Remove"
                                                                 class="btn btn-link btn-danger delete-confirm show_confirm"
                                                                 data-original-title="Remove">
                                                                 <i class="fa fa-trash"></i>

@@ -43,18 +43,30 @@
                         <td>Rp {{number_format($pk->harga_kamar, 0, ',', '. ')}}</td>
                         <td style="width: 20%;">
                             <div class="form-button-action">
-                                <a href="{{ route('data-pemilik.show',$pk->id) }}" type="button" data-toggle="tooltip"
+                                <a href="{{ route('data-pemilik.show', $pk->id) }}" type="button" data-toggle="tooltip"
                                     style="color: #11296b;" title="Detail" class="btn btn-link btn-lg"
                                     data-original-title="Detail">
                                     <i class="bi bi-eye"></i>
                                 </a>
-                                <a href="{{ route('data-pemilik.edit',$pk->id) }}" type="button" data-toggle="tooltip"
+                                <a href="{{ route('data-pemilik.edit', $pk->id) }}" type="button" data-toggle="tooltip"
                                     style="color: #fd5f00;" title="Edit" class="btn btn-link btn-lg"
                                     data-original-title="Edit Task">
                                     <i class="fa fa-edit"></i>
                                 </a>
+
+                                <!-- Add Delete Button with Form -->
+                                <form action="{{ route('data-pemilik.destroy', $pk->unique_id) }}" method="POST"
+                                    style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-link btn-lg" style="color: #ff0000;"
+                                        title="Delete" data-toggle="tooltip" data-original-title="Delete">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
                             </div>
                         </td>
+
                     </tr>
                     @endforeach
                 </tbody>
