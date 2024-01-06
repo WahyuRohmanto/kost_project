@@ -22,6 +22,7 @@ use App\Models\User;
 use App\Models\RekomendasiKost;
 use App\Models\Fasilitas;
 use App\Models\Kota;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -111,35 +112,74 @@ class PemilikController extends Controller
      */
     public function update(Request $request, $id)
     {
+        try {
+            $data = $request->validate([
+                'nama_kost' => 'required|max:45',
+                'luas_kamar' => 'required|max:45',
+                'harga_kamar' => 'required|max:45',
+                'keterangan' => 'required|max:45',
+                'alamat_kost' => 'nullable|string|min:10',
+                'foto_kamar' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+                'id_fasilitas' => 'required|max:45'
+            ]);
+    
+            $kost = Kost::findOrFail($id);
+    
+            if ($request->hasFile('foto_kamar')) {
+                $destination = public_path('admin/img/') . $kost->foto_kamar;
+    
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+    
+                $file = $request->file('foto_kamar');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move(public_path('admin/img'), $filename);
+                $data['foto_kamar'] = $filename;
+            }
+    
+            $kost->update($data);
+    
+            return redirect()->route('data-pemilik.index')->with(['success' => 'Kost Pemilik Berhasil Diupdate!']);
+        
+        } catch (\Exception $th) {
+            return response()->json([
+                'status' => false,
+                'error' => $th->getMessage(),
+                'failed' => "Gagal Dikirim",
+            ], 500);
+        }
+        
 // dd($request);
-        $request->validate([
-            'nama_kost' => 'required|max:45',
-            'luas_kamar' => 'required|max:45',
-            'harga_kamar' => 'required|max:45',
-            'alamat_kost' => 'required|max:45',
-            'foto_kamar' => 'required|max:45',
-            'id_fasilitas' => 'required|max:45',
-            'kota_id' => 'required|max:45',
-            'id_user' => 'required|max:45',
-        ]);
+        // $request->validate([
+        //     'nama_kost' => 'required|max:45',
+        //     'luas_kamar' => 'required|max:45',
+        //     'harga_kamar' => 'required|max:45',
+        //     'alamat_kost' => 'required|max:45',
+        //     'foto_kamar' => 'required|max:45',
+        //     'id_fasilitas' => 'required|max:45',
+        //     'kota_id' => 'required|max:45',
+        //     'id_user' => 'required|max:45',
+        // ]);
 
-        DB::table('kost')
-        ->where('id',$id)
-        ->update(
-            [
-                'nama_kost' =>$request->nama_kost,
-                'luas_kamar' =>$request->luas_kamar,
-                'harga_kamar' =>$request->harga_kamar,
-                'alamat_kost' =>$request->alamat_kost,
-                'foto_kamar' =>$request->foto_kamar,
-                'id_fasilitas' =>$request->id_fasilitas,
-                'kota_id' =>$request->kota_id,
-                'id_user' =>$request->id_user,
-                'updated_at'=>now(),
-            ]
-        );
+        // DB::table('kost')
+        // ->where('id',$id)
+        // ->update(
+        //     [
+        //         'nama_kost' =>$request->nama_kost,
+        //         'luas_kamar' =>$request->luas_kamar,
+        //         'harga_kamar' =>$request->harga_kamar,
+        //         'alamat_kost' =>$request->alamat_kost,
+        //         'foto_kamar' =>$request->foto_kamar,
+        //         'id_fasilitas' =>$request->id_fasilitas,
+        //         'kota_id' =>$request->kota_id,
+        //         'id_user' =>$request->id_user,
+        //         'updated_at'=>now(),
+        //     ]
+        // );
 
-        return redirect()->route('data-pemilik.index')->with(['success' => 'Kost Pemilik Berhasil Diupdate!']);
+        // return redirect()->route('data-pemilik.index')->with(['success' => 'Kost Pemilik Berhasil Diupdate!']);
         
     }
 

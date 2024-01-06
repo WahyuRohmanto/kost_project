@@ -36,6 +36,7 @@
                 </thead>
                 <tbody>
                     @foreach($pemilik_kost as $pk)
+                    @if($pk->id_user === Auth::user()->id)
                     <tr>
                         <td>{{$pk->name}}</td>
                         <td>{{$pk->nama_kost}}</td>
@@ -56,7 +57,7 @@
 
                                 <!-- Add Delete Button with Form -->
                                 <form action="{{ route('data-pemilik.destroy', $pk->unique_id) }}" method="POST"
-                                    style="display: inline;">
+                                    style="display: inline;" onsubmit="return confirm('Ingin Menghapus Kost Ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-link btn-lg" style="color: #ff0000;"
@@ -66,8 +67,8 @@
                                 </form>
                             </div>
                         </td>
-
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>

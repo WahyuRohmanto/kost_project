@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-// import model kost
-use App\Models\Kost;
-use App\Models\Fasilitas;
-// import DB Query builder untuk fiture upload
 use DB;
+// import model kost
 use PDF;
+use App\Models\Kost;
+// import DB Query builder untuk fiture upload
+use App\Models\Fasilitas;
 use App\Exports\ExportKost;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -268,57 +270,98 @@ class KostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // proses input data kost
-        $request->validate([
-            'nama_kost' => 'required|max:45',
-            'luas_kamar' => 'required|max:45',
-            'harga_kamar' => 'required|max:45',
-            'keterangan' => 'required|max:45',
-            'alamat_kost' => 'nullable|string|min:10',
-            'foto_kamar' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-            'id_fasilitas' => 'required|max:45'
-        ]);
-
-        //------------foto lama apabila admin ingin ganti foto kamar-----------
-        $foto = DB::table('kost')->select('foto_kamar')->where('id',$id)->get();
-        foreach($foto as $f){
-            $namaFileFotoLama = $f->foto_kamar;
+        try {
+            $data = $request->validate([
+                'nama_kost' => 'required|max:45',
+                'luas_kamar' => 'required|max:45',
+                'harga_kamar' => 'required|max:45',
+                'keterangan' => 'required|max:45',
+                'alamat_kost' => 'nullable|string|min:10',
+                'foto_kamar' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+                'id_fasilitas' => 'required|max:45'
+            ]);
+    
+            $kost = Kost::findOrFail($id);
+    
+            if ($request->hasFile('foto_kamar')) {
+                $destination = public_path('admin/img/') . $kost->foto_kamar;
+    
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+    
+                $file = $request->file('foto_kamar');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move(public_path('admin/img'), $filename);
+                $data['foto_kamar'] = $filename;
+            }
+    
+            $kost->update($data);
+    
+            return redirect('/kost/' . $id)
+                ->with('success', 'Data kost berhasil di Update!');
+        } catch (\Exception $th) {
+            return response()->json([
+                'status' => false,
+                'error' => $th->getMessage(),
+                'failed' => "Gagal Dikirim",
+            ], 500);
         }
+        
+        
+        // proses input data kost
+        // $request->validate([
+        //     'nama_kost' => 'required|max:45',
+        //     'luas_kamar' => 'required|max:45',
+        //     'harga_kamar' => 'required|max:45',
+        //     'keterangan' => 'required|max:45',
+        //     'alamat_kost' => 'nullable|string|min:10',
+        //     'foto_kamar' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+        //     'id_fasilitas' => 'required|max:45'
+        // ]);
+        
+        
+        //------------foto lama apabila admin ingin ganti foto kamar-----------
+        // $foto = DB::table('kost')->select('foto_kamar')->where('id',$id)->get();
+        // foreach($foto as $f){
+        //     $namaFileFotoLama = $f->foto_kamar;
+        // }
 
         /**
          * Jika admin ingin ganti foto kamar
          * Jika ada foto lama ada, maka hapus foto lama terlebih dahulu danganti foto baru
          */
-        if(!empty($request->foto_kamar)){
-            if(!empty($kost_id->foto_kamar)) unlink('admin/img/'.$kost_id->foto_kamar);
-            $fileName = 'foto_kamar-'.$request->luas_kamar.'.'.$request->foto_kamar->extension();
-            //$fileName = $request->foto->getClientOriginalName();
-            $request->foto_kamar->move(public_path('admin/img'),$fileName);
-        }
+        // if(!empty($request->foto_kamar)){
+        //     if(!empty($kost_id->foto_kamar)) unlink('admin/img/'.$kost_id->foto_kamar);
+        //     $fileName = 'foto_kamar-'.$request->luas_kamar.'.'.$request->foto_kamar->extension();
+        //     //$fileName = $request->foto->getClientOriginalName();
+        //     $request->foto_kamar->move(public_path('admin/img'),$fileName);
+        // }
         /**
          * Jika admin tidak update foto kamar maka, pakai foto lama
          */
-        else{
-            $fileName = $namaFileFotoLama;
-        }
+        // else{
+        //     $fileName = $namaFileFotoLama;
+        // }
 
         /**
          * Lakukan update data dari request form edit
          */
-        DB::table('kost')->where('id',$id)->update(
-            [
-                'nama_kost' => $request->nama_kost,
-                'luas_kamar' => $request->luas_kamar,
-                'harga_kamar' => $request->harga_kamar,
-                'keterangan' => $request->keterangan,
-                'alamat_kost' => $request->alamat_kost,
-                'foto_kamar' => $fileName,
-                'id_fasilitas' => $request->id_fasilitas,
-                'updated_at'=>now(),
-            ]);
+        // DB::table('kost')->where('id',$id)->update(
+        //     [
+        //         'nama_kost' => $request->nama_kost,
+        //         'luas_kamar' => $request->luas_kamar,
+        //         'harga_kamar' => $request->harga_kamar,
+        //         'keterangan' => $request->keterangan,
+        //         'alamat_kost' => $request->alamat_kost,
+        //         'foto_kamar' => $fileName,
+        //         'id_fasilitas' => $request->id_fasilitas,
+        //         'updated_at'=>now(),
+        //     ]);
 
-        return redirect('/kost'.'/'.$id)
-                        ->with('success','Data kost berhasil di Update!');
+        // return redirect('/kost'.'/'.$id)
+        //                 ->with('success','Data kost berhasil di Update!');
 
     }
 

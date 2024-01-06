@@ -10,11 +10,11 @@
                             <div class="col-lg-4">
                                 <div class="card mb-4">
                                     <div class="card-body text-center">
-                                        <img src="#" alt="avatar" class="rounded-circle img-fluid"
-                                            style="width: 150px;">
+                                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                         <h5 class="my-3">{{$user->pekerjaan}}</h5>
                                         <p class="text-muted mb-1"></p>
-                                        <p class="text-muted mb-4">{{$user->role}}</p>
+
                                         <div class="d-flex justify-content-center mb-2">
                                             <a href="/" class="btn bt ms-1 "><i
                                                     class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
@@ -61,7 +61,7 @@
                                         {{-- <hr> --}}
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <p class="mb-0">Mobile</p>
+                                                <p class="mb-0">Number Phone</p>
                                             </div>
                                             <div class="col-sm-9">
                                                 <p class="text-muted mb-0">{{$user->telp}}</p>

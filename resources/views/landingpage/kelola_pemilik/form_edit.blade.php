@@ -53,22 +53,31 @@
                                                         type="text" class="form-control" placeholder="">
                                                 </div>
                                                 <div class="form-group">
+                                                    <label>Keterangan</label>
+                                                    <input value="{{ $detail_kamar->keterangan }}" name="keterangan"
+                                                        type="text" class="form-control" placeholder="keterangan">
+                                                </div>
+                                                <div class="form-group">
                                                     <label>Alamat Kost</label>
                                                     <input value="{{$detail_kamar->alamat_kost}}" name="alamat_kost"
                                                         type="text" class="form-control" placeholder="">
                                                 </div>
-                                                <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label>Foto Kamar</label>
                                                     <input value="{{$detail_kamar->foto_kamar}}" name="foto_kamar"
                                                         type="text" class="form-control" placeholder="">
-                                                </div>
-
-                                                <!-- <div class="form-group">
-                                                    <label>Foto Kamar</label>
-                                                    <input name="foto_kamar" type="file" class="form-control-file">
                                                 </div> -->
 
-
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlFile1">Foto Kamar</label>
+                                                    <input name="foto_kamar" type="file" class="form-control-file"
+                                                        id="exampleFormControlFile1">
+                                                    @if(!empty($detail_kamar->foto_kamar)) <img
+                                                        src="{{ url('admin/img')}}/{{$detail_kamar->foto_kamar}}"
+                                                        width="20%" class="img-thumbnail">
+                                                    <br />{{$detail_kamar->foto_kamar}}
+                                                    @endif
+                                                </div>
 
 
 
