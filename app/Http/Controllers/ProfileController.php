@@ -116,6 +116,7 @@ class ProfileController extends Controller
                 'role' => $request->role,
                 'pekerjaan' => $request->pekerjaan,
                 'telp' => $request->telp,
+                'alamat' => $request->alamat,
                 // 'foto_user' => $fileName,
                 // 'password' => Hash::make($request->password),
                 'updated_at'=>now(),

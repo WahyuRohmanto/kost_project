@@ -1,11 +1,11 @@
 @extends('landingpage.app')
 @section('content')
-<div class="wrapper" style=" background-color:#eee;">
+<div class="wrapper mt-5 mb-5 pt-5 pb-5" style=" background-color:#eee;">
     <div class="main-panel">
         <div class="content">
             <div class="page-inner">
                 <section>
-                    <div class="container py-2">
+                    <div class="container py-2 mt-5 mb-5 pt-5 ">
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="card mb-4">
@@ -64,7 +64,7 @@
                                                 <p class="mb-0">Number Phone</p>
                                             </div>
                                             <div class="col-sm-9">
-                                                <p class="text-muted mb-0">{{$user->telp}}</p>
+                                                <p class="text-muted mb-0">0{{$user->telp}}</p>
                                             </div>
                                         </div>
                                         <hr>

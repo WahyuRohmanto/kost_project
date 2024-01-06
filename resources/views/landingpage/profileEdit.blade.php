@@ -1,6 +1,6 @@
 @extends('landingpage.app')
 @section('content')
-<div class="container">
+<div class="container pt-5 pb-5 mb-5 mt-5">
     <div class="row">
         <div class="col">
             <div class="card">
@@ -17,7 +17,6 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row">
-
                                     <label for="name" class="col-4 col-form-label">Nama</label>
                                     <div class="col-8">
                                         <input id="username" name="name" placeholder="Username"
@@ -43,19 +42,23 @@
                                     <label for="text" class="col-4 col-form-label">No. Telpon</label>
                                     <div class="col-8">
                                         <input id="text" placeholder="Nick Name" class="form-control here" name="telp"
-                                            type="text" value="{{$user->telp}}">
-
+                                            type="text" value="0{{$user->telp}}">
                                         <input hidden id="text" name="role" placeholder="Nick Name"
                                             class="form-control here" type="text" value="{{$user->role}}">
                                     </div>
                                 </div>
-
+                                <div class="form-group row">
+                                    <label for="text" class="col-4 col-form-label">Alamat</label>
+                                    <div class="col-8">
+                                        <input id="text" placeholder="Nick Name" class="form-control here" name="alamat"
+                                            type="text" value="{{$user->alamat}}">
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
                                         <a href="{{ url('/customer-profile') }}" class="btn btn-danger">Back</a>
                                         <button type="submit" class="btn btn-update">Update</button>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
