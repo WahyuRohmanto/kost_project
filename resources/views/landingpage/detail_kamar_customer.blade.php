@@ -1,6 +1,5 @@
 @extends('landingpage.app')
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col p-5" id="main">
@@ -88,7 +87,7 @@
                                 </div>
 
                                 <div class="mt-5 row p-3">
-                                    <h5 style="font-size: 24px;font-weight: 600;">Ketersediaan kost</h5>
+                                    <h5 style="font-size: 24px;font-weight: 600;">Keterangan Lainnya</h5>
                                 </div>
                                 <br>
                                 <div>
@@ -260,8 +259,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </form>
                             </div>
                         </div>
@@ -275,17 +272,4 @@
         </div>
     </div>
 </div>
-</div>
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
-<!-- <script type="text/javascript">
-$("#modal").click(function() {
-    var masuk = $("#masuk").val();
-    var marks = $("#keluar").val();
-    var str = ` <p>: {{$kost_id->nama_kost}}</p>
-                <p>: {{$kost_id->luas_kamar}} Meter</p>
-                <p>: {{$kost_id->fasilitas}} asdad </p>`;
-    $("#data").append = 'wkwkw';
-});
-</script> -->
 @endsection

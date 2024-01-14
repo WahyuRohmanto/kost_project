@@ -57,11 +57,6 @@
                                                     <input value="{{ $detail_kamar->keterangan }}" name="keterangan"
                                                         type="text" class="form-control" placeholder="keterangan">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Alamat Kost</label>
-                                                    <input value="{{$detail_kamar->alamat_kost}}" name="alamat_kost"
-                                                        type="text" class="form-control" placeholder="">
-                                                </div>
                                                 <!-- <div class="form-group">
                                                     <label>Foto Kamar</label>
                                                     <input value="{{$detail_kamar->foto_kamar}}" name="foto_kamar"
@@ -78,9 +73,6 @@
                                                     <br />{{$detail_kamar->foto_kamar}}
                                                     @endif
                                                 </div>
-
-
-
                                                 <div class="form-group">
                                                     <label>Fasilitas</label>
                                                     <select name="id_fasilitas" class="form-control">
@@ -110,6 +102,11 @@
                                                             {{$kt->nama_kota}}</option>
                                                         @endforeach
                                                     </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Alamat Kost</label>
+                                                    <input value="{{$detail_kamar->alamat_kost}}" name="alamat_kost"
+                                                        type="text" class="form-control" placeholder="">
                                                 </div>
                                                 <div class="form-group">
                                                     <input hidden value="{{$detail_kamar->id_user}}" name="id_user"
@@ -164,9 +161,5 @@ $('.show_confirm').click(function(event) {
         });
 });
 </script>
-
-
-
-
 </div>
 @endsection

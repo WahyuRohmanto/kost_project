@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // import model kost
 use App\Models\Kost;
+use App\Models\Kota;
 use App\Models\Fasilitas;
 use App\Models\RekomendasiKost;
 use Ramsey\Uuid\Uuid;
@@ -30,7 +31,7 @@ class InfoKostController extends Controller
         // ->join('users', 'users.id', '=', 'kost.id_user')
         // ->get();    
         $kost = Kost::all();
-        // dd($kost);
+        $kotaIds = Kota::pluck('id'); // Mendapatkan array ID dari semua kota
         // $kost = Kost::all();
         return view('landingpage.home', compact('kost', 'rekomendasi'));
     }

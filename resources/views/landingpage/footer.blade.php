@@ -32,8 +32,6 @@
                       </ul>
 
                   </div>
-
-
                   <div class="col-md-2 col-sm-4 col-xs-4">
 
                       <h5 class="heading heading pl-4 ml-3">Sosial Media</h5>
