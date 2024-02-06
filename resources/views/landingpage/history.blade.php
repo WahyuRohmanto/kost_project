@@ -25,10 +25,11 @@
                     @auth
                     @if(Auth::user()->name)
                     <tr>
-                        <td>{{$row->kode_bayar}}</td>
+                        <td>{{$row->name}}</td>
                         <td>{{$row->nama_kost}}</td>
                         <td>{{$row->luas_kamar}}</td>
-                        <td>{{$row->total_bayar}}</td>
+                        <td>Rp.{{number_format($row->total_bayar, 0, ',', '.')}}</td>
+
 
                         @if($row->pesanan === "progress")
                         <td>

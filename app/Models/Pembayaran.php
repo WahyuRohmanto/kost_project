@@ -10,5 +10,5 @@ class Pembayaran extends Model
     use HasFactory;
     // proteceted fillabel buat table pembayaran
     protected $table = 'pembayaran';
-    protected $fillable = ['kode_bayar','metode_pembayaran', 'pesanan', 'id_kamar', 'id_user', 'tanggal_masuk', 'tanggal_keluar', 'total_bayar','id_customer', 'status_pembayaran'];
+    protected $guarded = [];   
 }

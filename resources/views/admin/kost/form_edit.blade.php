@@ -11,9 +11,10 @@ $kota = App\Models\Kota::all();
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
+                <h4 class="page-title">Edit Kost</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="{{url('/administrator')}}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -21,13 +22,19 @@ $kota = App\Models\Kota::all();
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Forms</a>
+                        <a href="#">Master Data</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Basic Form</a>
+                        <a href="{{url('/kost')}}">Kost</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Edit</a>
                     </li>
                 </ul>
             </div>
@@ -133,7 +140,7 @@ $kota = App\Models\Kota::all();
             </div>
         </div>
     </div>
-@include('admin.footer')
+    @include('admin.footer')
 </div>
 
 {{-- Custom template | don't include it in your project! --}}

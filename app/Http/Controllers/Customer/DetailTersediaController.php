@@ -58,7 +58,7 @@ class DetailTersedia extends Controller
         dd($kost);
 
         $kost_id = collect($kost)->firstWhere('kost_id', '==' , $id);
-        // dd($kost_id);
+        // dd($kost_id); 
         return view('landingpage.detail_kamar_customer',compact('kost_id'));
     }
 

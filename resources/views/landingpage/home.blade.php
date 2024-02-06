@@ -1,6 +1,5 @@
 @extends('landingpage.app')
 @section('content')
-
 <div class="container-fluid p-0 d-flex justify-content-center">
     <img src="{{url('assets/image/banner.png')}}" class="banner-img img-fluid">
 </div>
@@ -27,14 +26,11 @@
     </div>
     <section class="container-fluid rekomendasi">
         <div class=" pt-4 pb-4 p-3 container">
-
             <div class="container">
                 <div class="row mb-md-2 d-flex">
-
                     @foreach($rekomendasi as $rk)
                     <div class="col-md-6 col-lg-3">
                         <div class="card shadow-sm border-light mb-4">
-
                             @empty($rk->foto_kamar)
                             <a href="{{ route('detailCustomer.show',$rk->unique_id) }}" class="position-relative">
                                 <img src="{{url('admin/img/no_foto_kamar.jpg')}}" class="card-img-top" alt="image">
@@ -201,8 +197,6 @@
         </div>
     </div>
 </div>
-
-
 <section class="pt-5 pb-5 testimoni">
     <div class="container">
         <div class="header-tittle mb-4">

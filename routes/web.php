@@ -6,6 +6,7 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\ProfileController;
 // import controller subfolder
 use App\Http\Controllers\Customer\InfoKostController;
 use App\Http\Controllers\Auth\UsersController;
@@ -17,6 +18,8 @@ use App\Http\Middleware\Role;
 use App\Http\Controllers\Customer\DetailTersediaController;
 use App\Http\Controllers\Pemilik\PemilikController;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+
+
 
 
 /*
@@ -41,19 +44,22 @@ Route::middleware(['auth', 'owner'])->group(function () {
     Route::view('dashboards', 'landingpage.dashboard');
     Route::get('dashboards', [PembayaranController::class, 'penyewa']);
     Route::get('detail-customer/{id}', [InfoKostController::class, 'show']);
-    Route::get('detail-tersedia/{id}', [DetailTersediaController::class, 'detail_tersedia']);
+    // Route::get('detail-tersedia/{id}', [DetailTersediaController::class, 'detail_tersedia']);
     Route::resource('kamar', InfoKostController::class);
     Route::resource('/data-pemilik', PemilikController::class);
     Route::get('pesanan', [PemilikController::class, 'pesanan']);
     Route::get('kost-pdf-pemilik', [PemilikController::class, 'cetakKost']);
     Route::get('kost-excel-pemilik', [PemilikController::class, 'print']);
+    Route::put('/pembayaran_pemilik/{totalBayar}', [PembayaranController::class, 'pemPemilik'])->name('pembayaran.pembayaran_pemilik');
+    Route::get('/addKost', function () {
+        return view('landingpage.kelola_pemilik.form_addKost');
+    });
 });
 
 // Admin Dashboard
 Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/administrator', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/fasilitas', FasilitasController::class);
-    Route::resource('/kost', KostController::class);
     Route::resource('/rekomendasi', RekomendasikanController::class);
     Route::get('kost-edit/{id}', [KostController::class, 'edit']);
     Route::get('fasilitas-edit/{id}', [FasilitasController::class, 'edit']);
@@ -87,6 +93,11 @@ Route::get('history', [PembayaranController::class, 'transaksiCustomer'])->name(
 Route::resource('/detailCustomer', InfoKostController::class)->middleware('auth');
 Route::resource('/pembayaran', PembayaranController::class);
 Route::resource('/pembayaran', PembayaranController::class);
+Route::resource('customer-profile', ProfileController::class);
+Route::resource('/kost', KostController::class);
+
+
+
 
 
 

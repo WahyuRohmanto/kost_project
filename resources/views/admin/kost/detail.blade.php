@@ -12,7 +12,7 @@ $kota = App\Models\Kota::all();
                     <h4 class="page-title">Detail Kamar</h4>
                     <ul class="breadcrumbs">
                         <li class="nav-home">
-                            <a href="#">
+                            <a href="{{url('/administrator')}}">
                                 <i class="flaticon-home"></i>
                             </a>
                         </li>
@@ -20,13 +20,19 @@ $kota = App\Models\Kota::all();
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Base</a>
+                            <a href="#">Master Data</a>
                         </li>
                         <li class="separator">
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Panels</a>
+                            <a href="{{url('/kost')}}">Kost</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Detail</a>
                         </li>
                     </ul>
                 </div>
@@ -41,26 +47,21 @@ $kota = App\Models\Kota::all();
                                     <div class="col-5 col-md-4">
                                         <div class="nav flex-column nav-pills nav-secondary" id="v-pills-tab"
                                             role="tablist" aria-orientation="vertical">
-                                            @empty($fs->foto_kamar)
-
-                                            <img class="card-img-top mb-5 mb-md-0"
-                                                src="{{ url('https://stimra.ac.id/wp-content/themes/consultix/images/no-image-found-360x260.png') }}"
-                                                alt="Profile_kamar">
+                                            @empty($kost_id->foto_kamar)
+                                            <img src="{{url('admin/img/no_foto_kamar.jpg')}}" class="d-block w-100"
+                                                alt="...">
                                             @else
-                                            <!-- awal image -->
-                                            <img class="card-img-top mb-5 mb-md-0"
-                                                src="{{ url('admin/img')}}/{{$kost_id->foto_kamar}}"
-                                                alt="Profile_kamar">
-                                            <!-- akhir image -->
-                                            @endempty
-
+                                            <img src="{{url('admin/img/'.$kost_id->foto_kamar)}}" class="d-block w-100"
+                                                alt="...">
+                                            @endif
                                             <br />
-                                            <a href="{{url('kost')}}" class="btn btn-link"><i
-                                                    class="flaticon-back"></i>&nbsp;&nbsp;Back</a>
+                                            <a href="{{ url('kost') }}" class="btn btn-link"
+                                                style="color: black; text-decoration: none;">
+                                                <i class="flaticon-back"></i>&nbsp;&nbsp;Back
+                                            </a>
+
                                         </div>
-
                                     </div>
-
                                     <div class="col-7 col-md-8">
                                         <div class="tab-content" id="v-pills-tabContent">
                                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
@@ -93,8 +94,6 @@ $kota = App\Models\Kota::all();
                                                                 <p>Daerah Pilihan: {{$kt->nama_kota}}</p>
                                                                 @endif
                                                                 @endforeach
-
-
                                                             </li>
                                                             <li>
                                                                 <p>Keterangan: {{$kost_id['keterangan']}}
@@ -106,7 +105,6 @@ $kota = App\Models\Kota::all();
                                             </div>
                                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                                 aria-labelledby="v-pills-profile-tab">
-
                                             </div>
                                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                                                 aria-labelledby="v-pills-messages-tab">

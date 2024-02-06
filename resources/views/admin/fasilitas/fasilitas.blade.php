@@ -22,13 +22,13 @@ $title = ['No', 'Fasilitas', 'Action'];
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Tables</a>
+                            <a href="#">Master Data</a>
                         </li>
                         <li class="separator">
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Datatables</a>
+                            <a href="#">Fasilitas</a>
                         </li>
                     </ul>
                 </div>
@@ -93,10 +93,9 @@ $title = ['No', 'Fasilitas', 'Action'];
                                                                 data-original-title="Edit">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            <button
-                                                                
-                                                                role="button" name="_method" type="submit" data-toggle="tooltip"
-                                                                title="" class="btn btn-link btn-danger delete-confirm show_confirm"
+                                                            <button role="button" name="_method" type="submit"
+                                                                data-toggle="tooltip" title=""
+                                                                class="btn btn-link btn-danger delete-confirm show_confirm"
                                                                 data-original-title="Remove">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
@@ -121,26 +120,24 @@ $title = ['No', 'Fasilitas', 'Action'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
     <script type="text/javascript">
- 
-     $('.show_confirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-              title: `Yakin data fasilitas akan dihapus?`,
-              text: "Jika kamu menghapus data ini maka, data di table lain akan ikut terhapus permanent!",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              form.submit();
-            }
-          });
-      });
-  
-</script>
+    $('.show_confirm').click(function(event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+                title: `Yakin data fasilitas akan dihapus?`,
+                text: "Jika kamu menghapus data ini maka, data di table lain akan ikut terhapus permanent!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+    </script>
     <!-- End Custom template -->
 </div>
 @endsection

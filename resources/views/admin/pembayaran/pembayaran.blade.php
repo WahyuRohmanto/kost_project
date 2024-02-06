@@ -22,13 +22,13 @@ $title = ['No', 'Kode Bayar','Kost', 'Customer', 'Tanggal Masuk', 'Tanggal Kelua
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Tables</a>
+                            <a href="#">Master Data</a>
                         </li>
                         <li class="separator">
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Datatables</a>
+                            <a href="#">Pembayaran</a>
                         </li>
                     </ul>
                 </div>
@@ -134,7 +134,7 @@ $title = ['No', 'Kode Bayar','Kost', 'Customer', 'Tanggal Masuk', 'Tanggal Kelua
                                                 <td>{{$fs['id_user']}}</td>
                                                 <td>{{$fs['tanggal_masuk']}}</td>
                                                 <td>{{$fs['tanggal_keluar']}}</td>
-                                                <td>Rp. {{number_format($fs['total_bayar'], 2, ',', '. ')}}</td>
+                                                <td>Rp. {{number_format($fs['total_bayar'], 2,',', '.')}}</td>
                                                 @if($fs->status_pembayaran === "diproses")
                                                 <td>
                                                     <p style="border-radius: 500px;"
@@ -154,8 +154,6 @@ $title = ['No', 'Kode Bayar','Kost', 'Customer', 'Tanggal Masuk', 'Tanggal Kelua
                                                         {{$fs->status_pembayaran}}</p>
                                                 </td>
                                                 @endif
-
-
                                                 <td
                                                     style="display: flex; flex-directon: row; justify-content: center; align-item: center;">
                                                     {{-- konfirmasi status pembayaran --}}
@@ -166,7 +164,6 @@ $title = ['No', 'Kode Bayar','Kost', 'Customer', 'Tanggal Masuk', 'Tanggal Kelua
                                                         @csrf
                                                         <input name="status_pembayaran" hidden value="success"
                                                             type="text" />
-                                                        <input name="pesanan" hidden value="diterima" type="text" />
                                                         <button type="submit" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-primary btn-lg"
                                                             data-original-title="terima pesanan"><i
@@ -179,26 +176,24 @@ $title = ['No', 'Kode Bayar','Kost', 'Customer', 'Tanggal Masuk', 'Tanggal Kelua
                                                         @csrf
                                                         <input name="status_pembayaran" hidden value="dibatalkan"
                                                             type="text" />
-                                                        <input name="pesanan" hidden value="ditolak" type="text" />
                                                         <button type="submit" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger btn-lg"
                                                             data-original-title="tolak pesanan"><i
                                                                 class="bi bi-backspace-reverse"></i></button>
                                                     </form>
+                                                    {{-- diproses --}}
                                                     <form method="POST" action="{{route('pembayaran.update', $fs->id)}}"
                                                         enctype="multipart/form-data">
                                                         @method('PUT')
                                                         @csrf
                                                         <input name="status_pembayaran" hidden value="diproses"
                                                             type="text" />
-                                                        <input name="pesanan" hidden value="progress" type="text" />
                                                         <button type="submit" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-warning btn-lg"
                                                             data-original-title="proses pesanan"><i
                                                                 class="bi bi-arrow-clockwise"></i></button>
                                                     </form>
                                                     {{-- end status --}}
-
                                                     {{-- action detail & delete --}}
                                                     <form method="POST"
                                                         action="{{route('pembayaran.destroy', $fs->id)}}">
